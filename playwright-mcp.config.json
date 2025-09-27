@@ -1,0 +1,12 @@
+{
+  "browser": "chromium",
+  "headless": false,
+  "launchOptions": {
+    "channel": "chrome",
+    "args": ["--start-maximized"]
+  },
+  "contextOptions": {
+    "viewport": null
+  },
+  "trace": "on"
+}
