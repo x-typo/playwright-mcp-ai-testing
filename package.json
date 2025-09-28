@@ -20,7 +20,7 @@
     "uiMode": "npx playwright test --ui",
     "codeGenDesktop": "npx playwright codegen https://practice.expandtesting.com/notes/app",
     "codeGenMobile": "npx playwright codegen --device=\"iPhone 14\" https://practice.expandtesting.com/notes/app",
-    "mcp": "npx @playwright/mcp@latest --config ./playwright-mcp.config.json --save-trace --save-video=1280x720 --output-dir=./mcp-artifacts"
+    "mcp": "npx @playwright/mcp@latest --browser=chrome --save-trace --save-video=1920x1080 --viewport-size=1920x1080 --output-dir=./mcp-artifacts"
   },
   "keywords": [],
   "license": "ISC",
