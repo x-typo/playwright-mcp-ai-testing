@@ -9,17 +9,14 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Path where globalSetup will write the storage state
 const MainAccountFile = path.resolve(
   __dirname,
   "../auth/storageStates/mainAccountSetup.json"
 );
 
 const config: PlaywrightTestConfig = defineConfig({
-  // Run your login/setup script once before all tests
   globalSetup: path.resolve(__dirname, "../auth/authSetups/global-setup.ts"),
 
-  // Where your feature tests live
   testDir: "../tests/playwright/features",
 
   snapshotPathTemplate:
@@ -46,7 +43,7 @@ const config: PlaywrightTestConfig = defineConfig({
 
   use: {
     baseURL: process.env.UI_BASE_URL,
-    headless: true,
+    headless: false,
     trace: "retain-on-failure",
     storageState: MainAccountFile,
   },
