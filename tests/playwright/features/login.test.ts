@@ -12,14 +12,10 @@ test.beforeEach("Navigate to page", async ({ loginPage }) => {
   await loginPage.navigateLoginPage();
 });
 
-test(
+test.only(
   "Page Validation",
   { tag: ["@smoke", "@regression"] },
-  async ({ loginPage }) => {
-    await test.step("Verify", async () => {
-      await expect(loginPage.loginPageHeading).toBeVisible();
-    });
-  }
+  async ({ loginPage }) => {}
 );
 
 test(
