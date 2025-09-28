@@ -12,7 +12,7 @@ test.beforeEach("Navigate to page", async ({ loginPage }) => {
   await loginPage.navigateLoginPage();
 });
 
-test.only(
+test(
   "Page Validation",
   { tag: ["@smoke", "@regression"] },
   async ({ loginPage }) => {}
