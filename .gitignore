@@ -6,4 +6,3 @@ node_modules/
 /idea/
 /.idea/workspace.xml
 .env
-/.github/copilot-instructions.md
