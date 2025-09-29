@@ -27,6 +27,8 @@ npm run codeGenDesktop # Generate test code from browser actions
 npm run report         # View HTML test reports
 ```
 
+> **Default execution**: When asked to run desktop Playwright tests (including login scenarios), prefer `npm run chromeDebug`. Use `npm run chromeUI` only if the user explicitly requests a headless batch run.
+
 ## Test Structure & Conventions
 
 ### Test File Patterns
@@ -36,7 +38,7 @@ npm run report         # View HTML test reports
 - **Tags**: Use `{ tag: ["@smoke", "@regression", "@visual"] }` for test filtering
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
 - **Isolation**: Mark newly generated Playwright tests with `.only` so only the new scenario runs, then remove the `.only` once the scenario passes locally
-- **Debugging**: After creating a new test, execute `npm run chromeDebug` to debug it interactively
+- **Debugging**: After creating or updating a test, execute `npm run chromeDebug` to debug it interactively. Avoid `npm run chromeUI` unless the user specifically needs a headless run.
 
 ### Page Object Usage
 
