@@ -44,4 +44,15 @@ export class LoginPage extends BasePage {
     await this.passwordInputBox.fill(password);
     await this.loginButton.click();
   }
+
+  async fillLoginForm({
+    emailAddress,
+    password,
+  }: {
+    emailAddress: string;
+    password: string;
+  }): Promise<void> {
+    await this.emailInputBox.fill(emailAddress);
+    await this.passwordInputBox.fill(password);
+  }
 }
