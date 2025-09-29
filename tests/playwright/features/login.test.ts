@@ -15,7 +15,13 @@ test.beforeEach("Navigate to page", async ({ loginPage }) => {
 test(
   "Page Validation",
   { tag: ["@smoke", "@regression"] },
-  async ({ loginPage }) => {}
+  async ({ loginPage }) => {
+    await test.step("Verify", async () => {
+      await expect(loginPage.emailInputBox).toBeVisible();
+      await expect(loginPage.passwordInputBox).toBeVisible();
+      await expect(loginPage.loginButton).toBeVisible();
+    });
+  }
 );
 
 test(
