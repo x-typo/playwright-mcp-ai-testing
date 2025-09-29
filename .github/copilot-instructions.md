@@ -35,7 +35,7 @@ npm run report         # View HTML test reports
 - **Imports**: Always use `{ test, expect } from "../../../fixtures/automation-fixtures"`
 - **Tags**: Use `{ tag: ["@smoke", "@regression", "@visual"] }` for test filtering
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
-- **Isolation**: Mark newly generated Playwright tests with `.only` so only the new scenario runs
+- **Isolation**: Mark newly generated Playwright tests with `.only` so only the new scenario runs, then remove the `.only` once the scenario passes locally
 - **Debugging**: After creating a new test, execute `npm run chromeDebug` to debug it interactively
 
 ### Page Object Usage
