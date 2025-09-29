@@ -51,6 +51,8 @@ test("example", async ({ loginPage, notesDashboardPage }) => {
 });
 ```
 
+- 🧠 **Keep interactions inside the page object.** Tests should call high-level methods on the page object and reserve the test file for assertions and orchestration. For example, move field entry logic like `await loginPage.emailInputBox.fill("x")` into a descriptive method on `login.page.ts`, then invoke that method from the test.
+
 ### API Integration Pattern
 
 ```typescript
@@ -120,6 +122,7 @@ get loginButton() { return this.button("Login"); }
 - ❌ Don't skip teardown - always clean up test artifacts
 - ❌ Don't ignore ad blockers - framework automatically blocks ad domains
 - ❌ Don't mix authentication states - be explicit with `asUser()`
+- ❌ Don't add local environment setup commands (for example, `$env:MAIN_USERNAME="test@example.com"`)—tests should rely on the configured `.env`/storage states instead.
 
 ## Debugging Tips
 
