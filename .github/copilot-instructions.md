@@ -96,6 +96,11 @@ get loginButton() { return this.button("Login"); }
 - **Config Location**: `configs/playwright.config.ts` (not root level)
 - **Cross-env**: Use `cross-env DOTENV_CONFIG_QUIET=true` prefix for all npm scripts
 
+### Natural Language Browser Commands
+
+- When a user request includes the phrase **"open chrome"** (case-insensitive), launch the Chrome session and navigate directly to `https://practice.expandtesting.com/notes/app/`.
+- If the loaded page presents the login form (for example, path `/notes/app/login`), automatically authenticate using `MAIN_USERNAME` and `MAIN_PASSWORD` from the `.env` file before pausing for further instructions.
+
 ## Common Anti-Patterns to Avoid
 
 ❌ Avoid: direct page object instantiation, hardcoded data, skipped teardown, mixed auth states.
