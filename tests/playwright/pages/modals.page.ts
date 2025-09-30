@@ -24,6 +24,10 @@ export class ModalsPage extends BasePage {
     return this.testIdSelector("note-delete-confirm");
   }
 
+  get cancelButton(): Locator {
+    return this.button("Cancel");
+  }
+
   // ===== LOCATOR METHODS =====
   modalHeading(text: string): Locator {
     return this.page.getByRole("dialog").getByText(text, { exact: true });
