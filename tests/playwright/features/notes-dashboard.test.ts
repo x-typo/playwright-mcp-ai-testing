@@ -72,7 +72,7 @@ test.describe("Notes Dashboard Page", () => {
     "Verify 'Add New Note' Modal",
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage, modalsPage }) => {
-      await test.step("Open modal", async () => {
+      await test.step("View modal", async () => {
         await notesDashboardPage.selectAddNoteButton();
       });
 
