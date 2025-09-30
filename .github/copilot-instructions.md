@@ -70,10 +70,7 @@ test("api test", async ({ notesClient, healthClient }) => {
 
 ### API Testing
 
-- **Base Client**: All API clients extend `BaseApiClient` with error handling
-- **Factory Pattern**: Access clients via `ApiClientFactory.getNotesClient()`
-- **Authentication**: API token automatically injected from storage state
-- **Response Handling**: Built-in success/error validation in `handleResponse()`
+- API Testing: Access API clients via fixtures (e.g., notesClient). Authentication is handled automatically. All clients extend BaseApiClient.
 
 ## Project-Specific Conventions
 
@@ -98,13 +95,6 @@ get loginButton() { return this.button("Login"); }
 - **Environment Variables**: Required: `MAIN_USERNAME`, `MAIN_PASSWORD`, `API_BASE_URL`, `UI_BASE_URL`
 - **Config Location**: `configs/playwright.config.ts` (not root level)
 - **Cross-env**: Use `cross-env DOTENV_CONFIG_QUIET=true` prefix for all npm scripts
-
-## CI/CD Integration
-
-- **GitHub Actions**: Workflows in `.github/workflows/` for desktop/mobile/visual testing
-- **Reporting**: JUnit XML generation with Teams/Email notifications
-- **Artifacts**: Test reports automatically deployed to GitHub Pages
-- **Parallel Execution**: 2 workers configured, fully parallel test execution
 
 ## Common Anti-Patterns to Avoid
 
