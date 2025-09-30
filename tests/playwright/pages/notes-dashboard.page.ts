@@ -1,4 +1,4 @@
-import { type Locator, type Page, expect } from "@playwright/test";
+import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 
 export class NotesDashboardPage extends BasePage {
@@ -13,9 +13,6 @@ export class NotesDashboardPage extends BasePage {
   get addNoteButton(): Locator {
     return this.testIdSelector("add-new-note");
   }
-  get submitButton(): Locator {
-    return this.testIdSelector("note-submit");
-  }
   get addNoteCategoryDropdown(): Locator {
     return this.testIdSelector("note-category");
   }
@@ -28,20 +25,11 @@ export class NotesDashboardPage extends BasePage {
   get searchButton(): Locator {
     return this.testIdSelector("search-btn");
   }
-  get noteTitleInputBox(): Locator {
-    return this.testIdSelector("note-title");
-  }
-  get noteDescriptionInputBox(): Locator {
-    return this.testIdSelector("note-description");
-  }
   get editCardButton(): Locator {
     return this.testIdSelector("note-edit");
   }
   get deleteCardButton(): Locator {
     return this.testIdSelector("note-delete");
-  }
-  get confirmDeleteButton(): Locator {
-    return this.testIdSelector("note-delete-confirm");
   }
 
   // ===== LOCATOR METHODS =====
@@ -90,28 +78,15 @@ export class NotesDashboardPage extends BasePage {
     await this.tabButton(name).click();
   }
 
-  async fillAndSubmitNoteForm(title: string, description: string) {
-    await this.noteTitleInputBox.fill(title);
-    await this.noteDescriptionInputBox.fill(description);
-    await this.submitButton.click();
-  }
-
   async selectAddNoteButton(): Promise<void> {
     await this.addNoteButton.click();
   }
 
-  async addNewNote(title: string, description: string) {
-    await this.selectAddNoteButton();
-    await this.fillAndSubmitNoteForm(title, description);
-  }
-
-  async updateNote(title: string, description: string) {
+  async selectEditButton(): Promise<void> {
     await this.editCardButton.click();
-    await this.fillAndSubmitNoteForm(title, description);
   }
 
-  async deleteNote() {
+  async selectDeleteButton(): Promise<void> {
     await this.deleteCardButton.click();
-    await this.confirmDeleteButton.click();
   }
 }
