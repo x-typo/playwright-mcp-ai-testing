@@ -18,7 +18,7 @@ npm run iosDebug       # Mobile iOS simulation with debugger
 npm run report         # View HTML test reports
 ```
 
-> **Default execution**: When asked to run desktop Playwright tests (including login scenarios), prefer `npm run chromeDebug`.
+> **Post-generation requirement**: After you create or update a Playwright test, run `npm run chromeDebug` yourself to validate the scenario and report the outcome in your response.
 
 ## Test Structure & Conventions
 
