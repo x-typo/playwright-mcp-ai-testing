@@ -18,7 +18,7 @@ npm run iosDebug       # Mobile iOS simulation with debugger
 npm run report         # View HTML test reports
 ```
 
-> **Post-generation requirement**: After you create or update a Playwright test, run `npm run chromeDebug` yourself to validate the scenario and report the outcome in your response.
+> **Post-generation requirement**: After you create or update a Playwright test, mark the scenario with `.only`, run `npm run chromeDebug` yourself to validate the scenario, remove the `.only` once it passes, and report the outcome in your response.
 
 ## Test Structure & Conventions
 
