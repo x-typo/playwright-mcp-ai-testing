@@ -12,7 +12,7 @@ export class ModalsPage extends BasePage {
     return this.testIdSelector("note-title");
   }
 
-  get addNewNoteCreateButton(): Locator {
+  get createButton(): Locator {
     return this.button("Create");
   }
 

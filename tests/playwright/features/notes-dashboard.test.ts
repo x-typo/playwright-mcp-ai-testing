@@ -73,13 +73,13 @@ test.describe("Notes Dashboard Page", () => {
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage, modalsPage }) => {
       await test.step("Open modal", async () => {
-        await notesDashboardPage.addNoteButton.click();
+        await notesDashboardPage.selectAddNoteButton();
       });
 
       await test.step("Verify", async () => {
         await expect(modalsPage.modalHeading("Add new note")).toBeVisible();
         await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
-        await expect(modalsPage.addNewNoteCreateButton).toBeVisible();
+        await expect(modalsPage.createButton).toBeVisible();
       });
     }
   );

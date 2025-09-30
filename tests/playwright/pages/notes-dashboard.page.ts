@@ -96,8 +96,12 @@ export class NotesDashboardPage extends BasePage {
     await this.submitButton.click();
   }
 
-  async addNewNote(title: string, description: string) {
+  async selectAddNoteButton(): Promise<void> {
     await this.addNoteButton.click();
+  }
+
+  async addNewNote(title: string, description: string) {
+    await this.selectAddNoteButton();
     await this.fillAndSubmitNoteForm(title, description);
   }
 
