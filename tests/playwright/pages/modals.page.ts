@@ -12,8 +12,16 @@ export class ModalsPage extends BasePage {
     return this.testIdSelector("note-title");
   }
 
-  get createButton(): Locator {
-    return this.button("Create");
+  get addNewNoteDescriptionInput(): Locator {
+    return this.testIdSelector("note-description");
+  }
+
+  get submitButton(): Locator {
+    return this.testIdSelector("note-submit");
+  }
+
+  get deleteButton(): Locator {
+    return this.testIdSelector("note-delete-confirm");
   }
 
   // ===== LOCATOR METHODS =====
@@ -24,4 +32,20 @@ export class ModalsPage extends BasePage {
   // ===== NAVIGATION =====
 
   // ===== INTERACTIONS =====
+  async fillAndSubmitNoteForm(
+    title: string,
+    description: string
+  ): Promise<void> {
+    await this.addNewNoteTitleInput.fill(title);
+    await this.addNewNoteDescriptionInput.fill(description);
+    await this.selectSubmitButton();
+  }
+
+  async selectDeleteButton(): Promise<void> {
+    await this.deleteButton.click();
+  }
+
+  async selectSubmitButton(): Promise<void> {
+    await this.submitButton.click();
+  }
 }
