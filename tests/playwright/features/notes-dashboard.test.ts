@@ -12,6 +12,7 @@ test.describe("Notes Dashboard Page", () => {
     async ({ notesDashboardPage }) => {
       await test.step("Verify", async () => {
         await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
+        await expect(notesDashboardPage.addNoteButton).toBeVisible();
       });
     }
   );
