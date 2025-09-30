@@ -15,19 +15,10 @@ This is a **hybrid testing framework** combining Playwright UI automation with A
 # Debug tests (most common during development)
 npm run chromeDebug    # Desktop Chrome with debugger
 npm run iosDebug       # Mobile iOS simulation with debugger
-
-# Run test suites
-npm run chromeUI       # Desktop headless execution
-npm run iosUI          # Mobile headless execution
-npm run chromeVisual   # Visual regression tests (@visual tag)
-
-# Development tools
-npm run uiMode         # Interactive Playwright UI
-npm run codeGenDesktop # Generate test code from browser actions
 npm run report         # View HTML test reports
 ```
 
-> **Default execution**: When asked to run desktop Playwright tests (including login scenarios), prefer `npm run chromeDebug`. Use `npm run chromeUI` only if the user explicitly requests a headless batch run.
+> **Default execution**: When asked to run desktop Playwright tests (including login scenarios), prefer `npm run chromeDebug`.
 
 ## Test Structure & Conventions
 
@@ -117,12 +108,7 @@ get loginButton() { return this.button("Login"); }
 
 ## Common Anti-Patterns to Avoid
 
-- ❌ Don't instantiate page objects directly - use fixtures
-- ❌ Don't hardcode test data - use environment variables or API setup
-- ❌ Don't skip teardown - always clean up test artifacts
-- ❌ Don't ignore ad blockers - framework automatically blocks ad domains
-- ❌ Don't mix authentication states - be explicit with `asUser()`
-- ❌ Don't add local environment setup commands (for example, `$env:MAIN_USERNAME="test@example.com"`)—tests should rely on the configured `.env`/storage states instead.
+❌ Avoid: direct page object instantiation, hardcoded data, skipped teardown, mixed auth states.
 
 ## Debugging Tips
 
