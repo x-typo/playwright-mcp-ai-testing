@@ -69,7 +69,7 @@ test.describe("Notes Dashboard Page", () => {
   );
 
   test(
-    "Verify 'Add New Note' Modal",
+    "'Add New Note' Modal",
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage, modalsPage }) => {
       await test.step("View modal", async () => {
@@ -79,7 +79,24 @@ test.describe("Notes Dashboard Page", () => {
       await test.step("Verify", async () => {
         await expect(modalsPage.modalHeading("Add new note")).toBeVisible();
         await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
-        await expect(modalsPage.createButton).toBeVisible();
+        await expect(modalsPage.submitButton).toBeVisible();
+      });
+    }
+  );
+
+  test(
+    "'Edit Note' Modal",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage, modalsPage }) => {
+      await test.step("Open modal", async () => {
+        await notesDashboardPage.searchNotes("work2");
+        await notesDashboardPage.selectEditButton();
+      });
+
+      await test.step("Verify", async () => {
+        await expect(modalsPage.modalHeading("Edit note")).toBeVisible();
+        await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
+        await expect(modalsPage.submitButton).toBeVisible();
       });
     }
   );
@@ -87,14 +104,15 @@ test.describe("Notes Dashboard Page", () => {
   test(
     "Add New Note",
     { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, notesClient }) => {
+    async ({ notesDashboardPage, modalsPage, notesClient }) => {
       const noteData = {
         title: "addNoteTest",
         description: "addNoteDescriptionTest",
       };
 
       await test.step("Create new note", async () => {
-        await notesDashboardPage.addNewNote(
+        await notesDashboardPage.selectAddNoteButton();
+        await modalsPage.fillAndSubmitNoteForm(
           noteData.title,
           noteData.description
         );
@@ -121,7 +139,7 @@ test.describe("Notes Dashboard Page", () => {
   test(
     "Update Note",
     { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, notesClient }) => {
+    async ({ notesDashboardPage, modalsPage, notesClient }) => {
       const noteId = "68c5dac606ff22028be98c3a";
       const originalNote = {
         title: "work2",
@@ -141,7 +159,8 @@ test.describe("Notes Dashboard Page", () => {
       });
 
       await test.step("Update note", async () => {
-        await notesDashboardPage.updateNote(
+        await notesDashboardPage.selectEditButton();
+        await modalsPage.fillAndSubmitNoteForm(
           updatedNote.title,
           updatedNote.description
         );
@@ -169,7 +188,7 @@ test.describe("Notes Dashboard Page", () => {
   test(
     "Delete Note",
     { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, notesClient }) => {
+    async ({ notesDashboardPage, modalsPage, notesClient }) => {
       const noteData = {
         title: "deleteNoteTest",
         description: "deleteNoteDescriptionTest",
@@ -195,7 +214,8 @@ test.describe("Notes Dashboard Page", () => {
       });
 
       await test.step("Delete Note", async () => {
-        await notesDashboardPage.deleteNote();
+        await notesDashboardPage.selectDeleteButton();
+        await modalsPage.selectDeleteButton();
       });
 
       await test.step("Verify", async () => {
