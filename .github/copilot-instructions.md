@@ -18,7 +18,7 @@ npm run iosDebug       # Mobile iOS simulation with debugger
 npm run report         # View HTML test reports
 ```
 
-> **Post-generation requirement**: After you create or update a Playwright test, mark the scenario with `.only`, run `npm run chromeDebug` yourself to validate the scenario, remove the `.only` once it passes, and report the outcome in your response.
+> **Post-generation requirement**: After you create or update a Playwright test, run `npx playwright test --config=./configs/playwright.config.ts --project=chromeUI --debug path/to/test-file --grep "Scenario Name"` yourself to validate the scenario (replace the path and scenario name with your actual values).
 
 ## Test Structure & Conventions
 
@@ -28,8 +28,7 @@ npm run report         # View HTML test reports
 - **Imports**: Always use `{ test, expect } from "../../../fixtures/automation-fixtures"`
 - **Tags**: Use `{ tag: ["@smoke", "@regression", "@visual"] }` for test filtering
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
-- **Isolation**: Mark newly generated Playwright tests with `.only` so only the new scenario runs, then remove the `.only` once the scenario passes locally
-- **Debugging**: After creating or updating a test, execute `npm run chromeDebug` to debug it interactively. Avoid `npm run chromeUI` unless the user specifically needs a headless run.
+- **Debugging**: After creating or updating a test, execute `npx playwright test --config=./configs/playwright.config.ts --project=chromeUI --debug path/to/test-file --grep "Scenario Name"` to debug it interactively (replace the path and scenario name with your actual values). Avoid `npm run chromeUI` unless the user specifically needs a headless run.
 
 ### Page Object Usage
 
