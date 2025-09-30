@@ -7,9 +7,6 @@ export class ModalsPage extends BasePage {
   }
 
   // ===== LOCATOR GETTERS =====
-  get addNewNoteHeading(): Locator {
-    return this.heading("Add new note");
-  }
 
   get addNewNoteTitleInput(): Locator {
     return this.testIdSelector("note-title");
@@ -20,6 +17,9 @@ export class ModalsPage extends BasePage {
   }
 
   // ===== LOCATOR METHODS =====
+  modalHeading(text: string): Locator {
+    return this.page.getByRole("dialog").getByText(text, { exact: true });
+  }
 
   // ===== NAVIGATION =====
 

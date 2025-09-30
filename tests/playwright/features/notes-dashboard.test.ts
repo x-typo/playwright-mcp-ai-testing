@@ -77,7 +77,7 @@ test.describe("Notes Dashboard Page", () => {
       });
 
       await test.step("Verify", async () => {
-        // await expect(modalsPage.addNewNoteHeading).toBeVisible();
+        await expect(modalsPage.modalHeading("Add new note")).toBeVisible();
         await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
         await expect(modalsPage.addNewNoteCreateButton).toBeVisible();
       });
