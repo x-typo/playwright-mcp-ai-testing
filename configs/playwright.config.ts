@@ -43,7 +43,7 @@ const config: PlaywrightTestConfig = defineConfig({
 
   use: {
     baseURL: process.env.UI_BASE_URL,
-    headless: false,
+    headless: true,
     trace: "retain-on-failure",
     storageState: MainAccountFile,
   },
