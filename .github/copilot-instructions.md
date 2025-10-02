@@ -51,6 +51,8 @@ test("example", async ({ loginPage, notesDashboardPage }) => {
 
 - 🧠 **Keep interactions inside the page object.** Tests should call high-level methods on the page object and reserve the test file for assertions and orchestration. For example, move field entry logic like `await loginPage.emailInputBox.fill("x")` into a descriptive method on `login.page.ts`, then invoke that method from the test.
 - 🧱 **Keep page interactions on their page.** Create or update the interaction in the corresponding page object file (for example, login flows belong in `login.page.ts`, notes dashboard behaviors in `notes-dashboard.page.ts`). Tests should never reimplement those interactions inline.
+- 🧭 **Match elements to their page.** If the elements you need live on a different page, confirm a page object already exists; if it doesn't, create a new page file for that screen with an appropriate name before adding locators or interactions.
+- 🚫 **Skip assertions in page objects.** Never import or call `expect` inside page files; leave all assertions to the test layer.
 
 ### API Integration Pattern
 
