@@ -69,6 +69,20 @@ test.describe("Notes Dashboard Page", () => {
   );
 
   test(
+    "Profile Page Navigation",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage, profileSettingsPage }) => {
+      await test.step("Open profile settings", async () => {
+        await notesDashboardPage.selectProfileSettingsButton();
+      });
+
+      await test.step("Verify", async () => {
+        await expect(profileSettingsPage.pageHeading).toBeVisible();
+      });
+    }
+  );
+
+  test(
     "'Add New Note' Modal",
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage, modalsPage }) => {
