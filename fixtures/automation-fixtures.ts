@@ -13,6 +13,7 @@ import { BasePage } from "../tests/playwright/pages/base.page";
 import { LoginPage } from "../tests/playwright/pages/login.page";
 import { NotesDashboardPage } from "../tests/playwright/pages/notes-dashboard.page";
 import { ModalsPage } from "../tests/playwright/pages/modals.page";
+import { ProfileSettingsPage } from "../tests/playwright/pages/profile-settings.page";
 
 dotenv.config();
 
@@ -62,6 +63,7 @@ type AutomationFixtures = {
   loginPage: LoginPage;
   notesDashboardPage: NotesDashboardPage;
   modalsPage: ModalsPage;
+  profileSettingsPage: ProfileSettingsPage;
 };
 
 export const test = base.extend<AutomationFixtures>({
@@ -116,6 +118,9 @@ export const test = base.extend<AutomationFixtures>({
   },
   modalsPage: async ({ pageFactory }, use) => {
     await use(pageFactory.getModalsPage());
+  },
+  profileSettingsPage: async ({ pageFactory }, use) => {
+    await use(pageFactory.getProfileSettingsPage());
   },
 
   // Accessibility tools (optional)
