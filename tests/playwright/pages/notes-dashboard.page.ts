@@ -31,6 +31,16 @@ export class NotesDashboardPage extends BasePage {
   get deleteCardButton(): Locator {
     return this.testIdSelector("note-delete");
   }
+  get profileSettingsLinkButton(): Locator {
+    return this.testIdSelector("profile");
+  }
+  get mobileNavigationToggle(): Locator {
+    return this.page
+      .locator("nav")
+      .filter({ has: this.profileSettingsLinkButton })
+      .getByRole("button")
+      .first();
+  }
 
   // ===== LOCATOR METHODS =====
   noteCardTitle(name: string): Locator {
@@ -59,7 +69,7 @@ export class NotesDashboardPage extends BasePage {
     return this.tabButton("category-personal");
   }
 
-  // ===== NAVIGATION =====
+  // ===== NAVIGATIONS =====
   async navigateNotesDashboardPage(): Promise<void> {
     await this.navigatePage("/notes/app");
   }
@@ -88,5 +98,12 @@ export class NotesDashboardPage extends BasePage {
 
   async selectDeleteButton(): Promise<void> {
     await this.deleteCardButton.click();
+  }
+
+  async selectProfileSettingsButton(): Promise<void> {
+    if (this.isMobile) {
+      await this.mobileNavigationToggle.click();
+    }
+    await this.profileSettingsLinkButton.click();
   }
 }
