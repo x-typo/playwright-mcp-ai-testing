@@ -111,8 +111,7 @@ get loginButton() { return this.button("Login"); }
 
 ### Natural Language Browser Control
 
-- When a user request includes **"open chrome"** (case-insensitive), launch the Chrome session and navigate directly to `https://practice.expandtesting.com/notes/app/`
-- If the loaded page presents the login form (path `/notes/app/login`), automatically authenticate using `MAIN_USERNAME` and `MAIN_PASSWORD` from the `.env` file before pausing for further instructions
+- When a user request includes **"open chrome"** (case-insensitive), launch the Chrome session and navigate directly to `https://practice.expandtesting.com/notes/app/login`, and automatically authenticate using `MAIN_USERNAME` and `MAIN_PASSWORD` from the `.env` file before pausing for further instructions
 
 ## Common Anti-Patterns to Avoid
 
