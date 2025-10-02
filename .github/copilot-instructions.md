@@ -28,8 +28,6 @@ npm run iosDebug       # Mobile iOS simulation with debugger
 npm run report         # View HTML test reports
 ```
 
-> **Post-generation requirement**: After you create or update a Playwright test, run `npx playwright test --config=./configs/playwright.config.ts --project=chromeUI --debug path/to/test-file --grep "Scenario Name"` yourself to validate the scenario (replace the path and scenario name with your actual values). Do **not** run the full suite unless the user explicitly asks for it.
-
 ## Test Structure & Conventions
 
 ### Test File Patterns
@@ -80,7 +78,10 @@ test("api test", async ({ notesClient, healthClient }) => {
 
 ### API Testing
 
-- API Testing: Access API clients via fixtures (e.g., notesClient). Authentication is handled automatically. All clients extend BaseApiClient.
+- **Client Access**: Access API clients via fixtures (e.g., `notesClient`, `healthClient`)
+- **Authentication**: Handled automatically through storage states and token management
+- **Base Structure**: All clients extend `BaseApiClient` for consistent error handling and configuration
+- **Test Integration**: Combine API calls with UI flows for setup, teardown, and state verification
 
 ## Project-Specific Conventions
 
@@ -106,14 +107,12 @@ get loginButton() { return this.button("Login"); }
 - **Config Location**: `configs/playwright.config.ts` (not root level)
 - **Cross-env**: Use `cross-env DOTENV_CONFIG_QUIET=true` prefix for all npm scripts
 
-### Natural Language Browser Commands
+## Special Commands
 
-- When a user request includes the phrase **"open chrome"** (case-insensitive), launch the Chrome session and navigate directly to `https://practice.expandtesting.com/notes/app/`.
-- If the loaded page presents the login form (for example, path `/notes/app/login`), automatically authenticate using `MAIN_USERNAME` and `MAIN_PASSWORD` from the `.env` file before pausing for further instructions.
+### Natural Language Browser Control
 
-### Suggestion & Feedback Requests
-
-- When the user asks for suggestions, feedback, or ideas, review the relevant sources (repository documentation, existing code, prior context) to determine the strongest recommendation, then present it alongside a concise explanation of why it stands out versus alternatives.
+- When a user request includes **"open chrome"** (case-insensitive), launch the Chrome session and navigate directly to `https://practice.expandtesting.com/notes/app/`
+- If the loaded page presents the login form (path `/notes/app/login`), automatically authenticate using `MAIN_USERNAME` and `MAIN_PASSWORD` from the `.env` file before pausing for further instructions
 
 ## Common Anti-Patterns to Avoid
 
@@ -135,3 +134,12 @@ When adding new features:
 - **New API clients**: Extend `BaseApiClient`, add to `ApiClientFactory`
 - **New test data**: Add models to `api/models/`, helpers to `api/utils/`
 - **New environments**: Update `configs/playwright.config.ts` projects array
+
+## Expectations for AI Agent mode
+
+- **REQUIRED** All code must be DRY, dynamic, modular, and reusable where possible.
+- **REQUIRED** All code must follow best practices for the language and framework being used.
+- **REQUIRED** Never guess on function, class, or variable names. Look them up in the code and be aware of expected arguments and return types. Always verify with the existing code.
+- **REQUIRED** Always follow the existing code style and conventions.
+- **REQUIRED** Always provide code that is compatible with the existing codebase and environment.
+- **REQUIRED** Implement all code fully, do not provide partial implementations, stubs, or pseudocode.
