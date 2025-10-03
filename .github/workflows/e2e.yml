@@ -1,7 +1,7 @@
 name: E2E Tests
 on:
-  # schedule:
-  #   - cron: "0 7 * * *"
+  schedule:
+    - cron: "0 7 * * *"
 
   workflow_dispatch:
 
@@ -74,7 +74,7 @@ jobs:
           password: ${{ env.MAIL_PASSWORD }}
           from: ${{ env.MAIL_USERNAME }}
           to: ${{ env.MAIL_END_USER }}
-          subject: Playwright E2E Tests Results (Desktop)
+          subject: Playwright E2E Tests Results (AI) - Desktop
           body: Detailed reports - ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       - name: Notify MS Teams
@@ -153,7 +153,7 @@ jobs:
           password: ${{ env.MAIL_PASSWORD }}
           from: ${{ env.MAIL_USERNAME }}
           to: ${{ env.MAIL_END_USER }}
-          subject: Playwright E2E Tests Results (Mobile)
+          subject: Playwright E2E Tests Results (AI) - Mobile
           body: Detailed reports - ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       - name: Notify MS Teams
