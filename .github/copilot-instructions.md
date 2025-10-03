@@ -97,6 +97,13 @@ get emailInputBox() { return this.testIdSelector("login-email"); }
 get loginButton() { return this.button("Login"); }
 ```
 
+### DOM Inspection Workflow
+
+- When a task requires inspecting the DOM or validating a selector, issue the **"open chrome"** instruction. The agent will launch the authenticated Chrome session and land on `https://practice.expandtesting.com/notes/app/login` automatically.
+- From that session, navigate through the UI (or reuse stored credentials) to reach the relevant screen before inspecting elements. Use Chrome DevTools or inline locator evaluations to capture the exact attributes you need.
+- Prefer this live session for discovery over running `npm run chromeUI` or other suite commands; the latter are reserved for automated validation once selectors are finalized.
+- Once you've gathered the required selectors or DOM details, close the browser session to free resources before continuing with code changes or test runs.
+
 ### Test Data Management
 
 - **Cleanup**: Always clean up created test data in teardown steps
