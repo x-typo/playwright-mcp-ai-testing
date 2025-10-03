@@ -6,7 +6,7 @@ module.exports = {
       inputs: {
         url: process.env.TEAMS_WEBHOOK_URL,
         publish: "test-summary-slim",
-        title: "Playwright E2E Tests Result - Destkop (Chrome)",
+        title: "Playwright E2E Tests Result (AI) - Desktop (Chrome)",
         title_link: "https://github.com/x-typo/playwright-hybrid-e2e",
         width: "full",
       },
@@ -21,7 +21,7 @@ module.exports = {
                 url: "https://github.com/x-typo",
               },
               {
-                text: "Repo - Playwright Hybrid E2E",
+                text: "Repo - Playwright Hybrid E2E (AI)",
                 url: "https://github.com/x-typo/playwright-hybrid-e2e",
               },
               {
