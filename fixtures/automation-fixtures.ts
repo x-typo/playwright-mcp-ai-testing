@@ -14,6 +14,7 @@ import { LoginPage } from "../tests/playwright/pages/login.page";
 import { NotesDashboardPage } from "../tests/playwright/pages/notes-dashboard.page";
 import { ModalsPage } from "../tests/playwright/pages/modals.page";
 import { ProfileSettingsPage } from "../tests/playwright/pages/profile-settings.page";
+import { ForgotPasswordPage } from "../tests/playwright/pages/forgot-password.page";
 
 dotenv.config();
 
@@ -64,6 +65,7 @@ type AutomationFixtures = {
   notesDashboardPage: NotesDashboardPage;
   modalsPage: ModalsPage;
   profileSettingsPage: ProfileSettingsPage;
+  forgotPasswordPage: ForgotPasswordPage;
 };
 
 export const test = base.extend<AutomationFixtures>({
@@ -121,6 +123,9 @@ export const test = base.extend<AutomationFixtures>({
   },
   profileSettingsPage: async ({ pageFactory }, use) => {
     await use(pageFactory.getProfileSettingsPage());
+  },
+  forgotPasswordPage: async ({ pageFactory }, use) => {
+    await use(pageFactory.getForgotPasswordPage());
   },
 
   // Accessibility tools (optional)

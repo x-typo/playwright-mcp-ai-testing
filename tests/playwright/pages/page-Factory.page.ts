@@ -3,6 +3,7 @@ import { LoginPage } from "./login.page";
 import { ModalsPage } from "./modals.page";
 import { NotesDashboardPage } from "./notes-dashboard.page";
 import { ProfileSettingsPage } from "./profile-settings.page";
+import { ForgotPasswordPage } from "./forgot-password.page";
 
 export class PageFactory {
   constructor(
@@ -24,5 +25,9 @@ export class PageFactory {
 
   getProfileSettingsPage(): ProfileSettingsPage {
     return new ProfileSettingsPage(this.page, this.isMobile);
+  }
+
+  getForgotPasswordPage(): ForgotPasswordPage {
+    return new ForgotPasswordPage(this.page, this.isMobile);
   }
 }
