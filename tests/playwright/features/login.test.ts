@@ -24,6 +24,21 @@ test(
   }
 );
 
+test("Successful Login", async ({ loginPage, notesDashboardPage }) => {
+  const validCreds = {
+    emailAddress: process.env.MAIN_USERNAME!,
+    password: process.env.MAIN_PASSWORD!,
+  };
+
+  await test.step("Login with valid credentials", async () => {
+    await loginPage.login(validCreds);
+  });
+
+  await test.step("Verify", async () => {
+    await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
+  });
+});
+
 test(
   "Visual Test",
   { tag: ["@visual", "@smoke", "@regression"] },
@@ -55,19 +70,6 @@ test(
 //   }
 // );
 
-test("Invalid Email Address", async ({ loginPage }) => {
-  await test.step("Submit invalid email address", async () => {
-    await loginPage.login({
-      emailAddress: "invalidAddress",
-      password: "password12345!",
-    });
-  });
-
-  await test.step("Verify", async () => {
-    await expect(loginPage.text("Email address is invalid")).toBeVisible();
-  });
-});
-
 test("Invalid Password", async ({ loginPage }) => {
   await test.step("Submit invalid password", async () => {
     await loginPage.login({
@@ -83,17 +85,15 @@ test("Invalid Password", async ({ loginPage }) => {
   });
 });
 
-test("Successful Login", async ({ loginPage, notesDashboardPage }) => {
-  const validCreds = {
-    emailAddress: process.env.MAIN_USERNAME!,
-    password: process.env.MAIN_PASSWORD!,
-  };
-
-  await test.step("Login with valid credentials", async () => {
-    await loginPage.login(validCreds);
+test("Invalid Email Address", async ({ loginPage }) => {
+  await test.step("Submit invalid email address", async () => {
+    await loginPage.login({
+      emailAddress: "invalidAddress",
+      password: "password12345!",
+    });
   });
 
   await test.step("Verify", async () => {
-    await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
+    await expect(loginPage.text("Email address is invalid")).toBeVisible();
   });
 });
