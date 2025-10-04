@@ -1,4 +1,4 @@
-import { type Locator, type Page, expect } from "@playwright/test";
+import { type Locator, type Page } from "@playwright/test";
 
 export class BasePage {
   readonly page: Page;
@@ -55,10 +55,5 @@ export class BasePage {
   }
   async selectLink(name: string): Promise<void> {
     await this.link(name).click();
-  }
-
-  // ===== ASSERTIONS =====
-  async expectVisible(locator: Locator): Promise<void> {
-    await expect(locator).toBeVisible();
   }
 }
