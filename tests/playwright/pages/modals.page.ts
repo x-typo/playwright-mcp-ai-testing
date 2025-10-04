@@ -33,7 +33,7 @@ export class ModalsPage extends BasePage {
     return this.page.getByRole("dialog").getByText(text, { exact: true });
   }
 
-  // ===== NAVIGATION =====
+  // ===== NAVIGATIONS =====
 
   // ===== INTERACTIONS =====
   async fillAndSubmitNoteForm(

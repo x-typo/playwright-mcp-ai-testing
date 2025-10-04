@@ -58,6 +58,19 @@ test(
   }
 );
 
+test("Forgot password link navigates to reset password page", async ({
+  loginPage,
+  forgotPasswordPage,
+}) => {
+  await test.step("Open forgot password page", async () => {
+    await loginPage.selectForgotPasswordLink();
+  });
+
+  await test.step("Verify", async () => {
+    await expect(forgotPasswordPage.pageHeading).toBeVisible();
+  });
+});
+
 // test.skip(
 //   "Accessibility Test",
 //   { tag: "@accessibility" },

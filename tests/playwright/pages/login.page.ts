@@ -22,8 +22,11 @@ export class LoginPage extends BasePage {
   get googleLoginButton(): Locator {
     return this.testIdSelector("login-with-google");
   }
+  get forgotPasswordLink(): Locator {
+    return this.link("Forgot password");
+  }
 
-  // ===== NAVIGATION =====
+  // ===== NAVIGATIONS =====
   async navigateLoginPage(): Promise<void> {
     await this.navigatePage("/notes/app/login");
   }
@@ -43,6 +46,10 @@ export class LoginPage extends BasePage {
     await this.emailInputBox.fill(emailAddress);
     await this.passwordInputBox.fill(password);
     await this.loginButton.click();
+  }
+
+  async selectForgotPasswordLink(): Promise<void> {
+    await this.forgotPasswordLink.click();
   }
 
   async fillLoginForm({
