@@ -41,7 +41,7 @@ export class BasePage {
     return this.page.getByRole("textbox", { name });
   }
 
-  // ===== NAVIGATION =====
+  // ===== NAVIGATIONS =====
   async navigatePage(path: string): Promise<void> {
     await this.page.goto(path);
   }
