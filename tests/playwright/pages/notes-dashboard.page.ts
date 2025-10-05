@@ -71,7 +71,7 @@ export class NotesDashboardPage extends BasePage {
   // ===== INTERACTIONS =====
   async searchNotes(note: string): Promise<void> {
     await this.searchInputBox.fill(note);
-    await this.searchButton.click();
+    await this.selectTestIdSelector("search-btn");
   }
 
   async selectAllCategoryButton(): Promise<void> {
@@ -90,21 +90,21 @@ export class NotesDashboardPage extends BasePage {
     await this.selectButton("Personal•");
   }
   async selectAddNoteButton(): Promise<void> {
-    await this.addNoteButton.click();
+    await this.selectTestIdSelector("add-new-note");
   }
 
   async selectEditButton(): Promise<void> {
-    await this.editCardButton.click();
+    await this.selectTestIdSelector("note-edit");
   }
 
   async selectDeleteButton(): Promise<void> {
-    await this.deleteCardButton.click();
+    await this.selectTestIdSelector("note-delete");
   }
 
   async selectProfileSettingsButton(): Promise<void> {
     if (this.isMobile) {
       await this.mobileNavigationToggle.click();
     }
-    await this.profileSettingsLinkButton.click();
+    await this.selectTestIdSelector("profile");
   }
 }

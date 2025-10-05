@@ -36,7 +36,7 @@ export class LoginPage extends BasePage {
 
   // ===== INTERACTIONS =====
   async selectLoginButton(): Promise<void> {
-    await this.loginButton.click();
+    await this.selectTestIdSelector("login-submit");
   }
 
   async login({
@@ -48,7 +48,7 @@ export class LoginPage extends BasePage {
   }): Promise<void> {
     await this.emailInputBox.fill(emailAddress);
     await this.passwordInputBox.fill(password);
-    await this.loginButton.click();
+    await this.selectLoginButton();
   }
 
   async selectForgotPasswordLink(): Promise<void> {
