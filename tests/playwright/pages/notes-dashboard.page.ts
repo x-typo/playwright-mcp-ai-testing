@@ -2,37 +2,55 @@ import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 
 export class NotesDashboardPage extends BasePage {
+  private readonly selectors = {
+    myNotesLink: "home",
+    addNoteButton: "add-new-note",
+    addNoteCategoryDropdown: "note-category",
+    addNoteCompletedStatusCheckbox: "note-completed",
+    searchInput: "search-input",
+    searchButton: "search-btn",
+    editCardButton: "note-edit",
+    deleteCardButton: "note-delete",
+    profileSettingsLinkButton: "profile",
+    noteCardTitle: "note-card-title",
+    noteCardDescription: "note-card-description",
+    allCategory: "All",
+    workCategory: "Work•",
+    homeCategory: "Home•",
+    personalCategory: "Personal•",
+  } as const;
+
   constructor(page: Page, isMobile: boolean | undefined) {
     super(page, isMobile);
   }
 
   // ===== LOCATOR GETTERS =====
   get myNotesLinkButton(): Locator {
-    return this.testIdSelector("home");
+    return this.testIdSelector(this.selectors.myNotesLink);
   }
   get addNoteButton(): Locator {
-    return this.testIdSelector("add-new-note");
+    return this.testIdSelector(this.selectors.addNoteButton);
   }
   get addNoteCategoryDropdown(): Locator {
-    return this.testIdSelector("note-category");
+    return this.testIdSelector(this.selectors.addNoteCategoryDropdown);
   }
   get addNoteCompletedStatusCheckbox(): Locator {
-    return this.testIdSelector("note-completed");
+    return this.testIdSelector(this.selectors.addNoteCompletedStatusCheckbox);
   }
   get searchInputBox(): Locator {
-    return this.testIdSelector("search-input");
+    return this.testIdSelector(this.selectors.searchInput);
   }
   get searchButton(): Locator {
-    return this.testIdSelector("search-btn");
+    return this.testIdSelector(this.selectors.searchButton);
   }
   get editCardButton(): Locator {
-    return this.testIdSelector("note-edit");
+    return this.testIdSelector(this.selectors.editCardButton);
   }
   get deleteCardButton(): Locator {
-    return this.testIdSelector("note-delete");
+    return this.testIdSelector(this.selectors.deleteCardButton);
   }
   get profileSettingsLinkButton(): Locator {
-    return this.testIdSelector("profile");
+    return this.testIdSelector(this.selectors.profileSettingsLinkButton);
   }
   get mobileNavigationToggle(): Locator {
     return this.page
@@ -42,24 +60,26 @@ export class NotesDashboardPage extends BasePage {
       .first();
   }
   get allCategoryButton(): Locator {
-    return this.button("All");
+    return this.button(this.selectors.allCategory);
   }
   get workCategoryButton(): Locator {
-    return this.button("Work•");
+    return this.button(this.selectors.workCategory);
   }
   get homeCategoryButton(): Locator {
-    return this.button("Home•");
+    return this.button(this.selectors.homeCategory);
   }
   get personalCategoryButton(): Locator {
-    return this.button("Personal•");
+    return this.button(this.selectors.personalCategory);
   }
 
   // ===== LOCATOR METHODS =====
   noteCardTitle(name: string): Locator {
-    return this.testIdSelector("note-card-title").filter({ hasText: name });
+    return this.testIdSelector(this.selectors.noteCardTitle).filter({
+      hasText: name,
+    });
   }
   noteCardDescription(name: string): Locator {
-    return this.testIdSelector("note-card-description").filter({
+    return this.testIdSelector(this.selectors.noteCardDescription).filter({
       hasText: name,
     });
   }
@@ -71,40 +91,40 @@ export class NotesDashboardPage extends BasePage {
   // ===== INTERACTIONS =====
   async searchNotes(note: string): Promise<void> {
     await this.searchInputBox.fill(note);
-    await this.selectTestIdSelector("search-btn");
+    await this.selectTestIdSelector(this.selectors.searchButton);
   }
 
   async selectAllCategoryButton(): Promise<void> {
-    await this.selectButton("All");
+    await this.selectButton(this.selectors.allCategory);
   }
 
   async selectWorkCategoryButton(): Promise<void> {
-    await this.selectButton("Work•");
+    await this.selectButton(this.selectors.workCategory);
   }
 
   async selectHomeCategoryButton(): Promise<void> {
-    await this.selectButton("Home•");
+    await this.selectButton(this.selectors.homeCategory);
   }
 
   async selectPersonalCategoryButton(): Promise<void> {
-    await this.selectButton("Personal•");
+    await this.selectButton(this.selectors.personalCategory);
   }
   async selectAddNoteButton(): Promise<void> {
-    await this.selectTestIdSelector("add-new-note");
+    await this.selectTestIdSelector(this.selectors.addNoteButton);
   }
 
   async selectEditButton(): Promise<void> {
-    await this.selectTestIdSelector("note-edit");
+    await this.selectTestIdSelector(this.selectors.editCardButton);
   }
 
   async selectDeleteButton(): Promise<void> {
-    await this.selectTestIdSelector("note-delete");
+    await this.selectTestIdSelector(this.selectors.deleteCardButton);
   }
 
   async selectProfileSettingsButton(): Promise<void> {
     if (this.isMobile) {
       await this.mobileNavigationToggle.click();
     }
-    await this.selectTestIdSelector("profile");
+    await this.selectTestIdSelector(this.selectors.profileSettingsLinkButton);
   }
 }

@@ -2,31 +2,41 @@ import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 
 export class LoginPage extends BasePage {
+  private readonly selectors = {
+    pageHeading: "Login",
+    emailInput: "Email",
+    passwordInput: "Password",
+    loginButton: "login-submit",
+    googleLoginButton: "login-with-google",
+    forgotPasswordLink: "Forgot password",
+    createAccountLink: "Create a free account!",
+  } as const;
+
   constructor(page: Page, isMobile: boolean | undefined) {
     super(page, isMobile);
   }
 
   // ===== LOCATOR GETTERS =====
   get loginPageHeading(): Locator {
-    return this.heading("Login");
+    return this.heading(this.selectors.pageHeading);
   }
   get emailInputBox(): Locator {
-    return this.inputBox("Email");
+    return this.inputBox(this.selectors.emailInput);
   }
   get passwordInputBox(): Locator {
-    return this.inputBox("Password");
+    return this.inputBox(this.selectors.passwordInput);
   }
   get loginButton(): Locator {
-    return this.testIdSelector("login-submit");
+    return this.testIdSelector(this.selectors.loginButton);
   }
   get googleLoginButton(): Locator {
-    return this.testIdSelector("login-with-google");
+    return this.testIdSelector(this.selectors.googleLoginButton);
   }
   get forgotPasswordLink(): Locator {
-    return this.link("Forgot password");
+    return this.link(this.selectors.forgotPasswordLink);
   }
   get createAccountLink(): Locator {
-    return this.link("Create a free account!");
+    return this.link(this.selectors.createAccountLink);
   }
 
   // ===== NAVIGATIONS =====
@@ -36,7 +46,7 @@ export class LoginPage extends BasePage {
 
   // ===== INTERACTIONS =====
   async selectLoginButton(): Promise<void> {
-    await this.selectTestIdSelector("login-submit");
+    await this.selectTestIdSelector(this.selectors.loginButton);
   }
 
   async login({
@@ -52,21 +62,10 @@ export class LoginPage extends BasePage {
   }
 
   async selectForgotPasswordLink(): Promise<void> {
-    await this.selectLink("Forgot password");
+    await this.selectLink(this.selectors.forgotPasswordLink);
   }
 
   async selectCreateAccountLink(): Promise<void> {
-    await this.selectLink("Create a free account!");
-  }
-
-  async fillLoginForm({
-    emailAddress,
-    password,
-  }: {
-    emailAddress: string;
-    password: string;
-  }): Promise<void> {
-    await this.emailInputBox.fill(emailAddress);
-    await this.passwordInputBox.fill(password);
+    await this.selectLink(this.selectors.createAccountLink);
   }
 }
