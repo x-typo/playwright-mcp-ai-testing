@@ -4,6 +4,7 @@ import { ModalsPage } from "./modals.page";
 import { NotesDashboardPage } from "./notes-dashboard.page";
 import { ProfileSettingsPage } from "./profile-settings.page";
 import { ForgotPasswordPage } from "./forgot-password.page";
+import { RegisterPage } from "./register.page";
 
 export class PageFactory {
   constructor(
@@ -29,5 +30,9 @@ export class PageFactory {
 
   getForgotPasswordPage(): ForgotPasswordPage {
     return new ForgotPasswordPage(this.page, this.isMobile);
+  }
+
+  getRegisterPage(): RegisterPage {
+    return new RegisterPage(this.page, this.isMobile);
   }
 }

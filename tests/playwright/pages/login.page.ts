@@ -25,6 +25,9 @@ export class LoginPage extends BasePage {
   get forgotPasswordLink(): Locator {
     return this.link("Forgot password");
   }
+  get createAccountLink(): Locator {
+    return this.link("Create a free account!");
+  }
 
   // ===== NAVIGATIONS =====
   async navigateLoginPage(): Promise<void> {
@@ -50,6 +53,10 @@ export class LoginPage extends BasePage {
 
   async selectForgotPasswordLink(): Promise<void> {
     await this.forgotPasswordLink.click();
+  }
+
+  async selectCreateAccountLink(): Promise<void> {
+    await this.createAccountLink.click();
   }
 
   async fillLoginForm({

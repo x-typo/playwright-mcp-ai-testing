@@ -62,12 +62,25 @@ test("Forgot password link navigates to reset password page", async ({
   loginPage,
   forgotPasswordPage,
 }) => {
-  await test.step("Open forgot password page", async () => {
+  await test.step("Select link", async () => {
     await loginPage.selectForgotPasswordLink();
   });
 
   await test.step("Verify", async () => {
     await expect(forgotPasswordPage.pageHeading).toBeVisible();
+  });
+});
+
+test("Create a free account link navigates to register page", async ({
+  loginPage,
+  registerPage,
+}) => {
+  await test.step("Select link", async () => {
+    await loginPage.selectCreateAccountLink();
+  });
+
+  await test.step("Verify", async () => {
+    await expect(registerPage.pageHeading).toBeVisible();
   });
 });
 
