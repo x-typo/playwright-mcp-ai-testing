@@ -39,7 +39,7 @@ test.describe("Notes Dashboard Page", () => {
 
   test("No Notes Displayed", async ({ notesDashboardPage }) => {
     await test.step("Select tab", async () => {
-      await notesDashboardPage.personalTab.click();
+      await notesDashboardPage.selectPersonalCategoryButton();
     });
 
     await test.step("Verify", async () => {
@@ -54,7 +54,7 @@ test.describe("Notes Dashboard Page", () => {
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage }) => {
       await test.step("Select tab", async () => {
-        await notesDashboardPage.workTab.click();
+        await notesDashboardPage.selectWorkCategoryButton();
       });
 
       await test.step("Search for notes", async () => {

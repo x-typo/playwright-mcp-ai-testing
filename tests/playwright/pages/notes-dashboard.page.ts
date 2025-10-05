@@ -41,17 +41,17 @@ export class NotesDashboardPage extends BasePage {
       .getByRole("button")
       .first();
   }
-  get allTab(): Locator {
-    return this.tabButton("category-all");
+  get allCategoryButton(): Locator {
+    return this.button("All");
   }
-  get workTab(): Locator {
-    return this.tabButton("category-work");
+  get workCategoryButton(): Locator {
+    return this.button("Work•");
   }
-  get homeTab(): Locator {
-    return this.tabButton("category-home");
+  get homeCategoryButton(): Locator {
+    return this.button("Home•");
   }
-  get personalTab(): Locator {
-    return this.tabButton("category-personal");
+  get personalCategoryButton(): Locator {
+    return this.button("Personal•");
   }
 
   // ===== LOCATOR METHODS =====
@@ -63,10 +63,6 @@ export class NotesDashboardPage extends BasePage {
       hasText: name,
     });
   }
-  tabButton(name: string): Locator {
-    return this.testIdSelector(name);
-  }
-
   // ===== NAVIGATIONS =====
   async navigateNotesDashboardPage(): Promise<void> {
     await this.navigatePage("/notes/app");
@@ -78,10 +74,21 @@ export class NotesDashboardPage extends BasePage {
     await this.searchButton.click();
   }
 
-  async selectTab(name: string): Promise<void> {
-    await this.tabButton(name).click();
+  async selectAllCategoryButton(): Promise<void> {
+    await this.selectButton("All");
   }
 
+  async selectWorkCategoryButton(): Promise<void> {
+    await this.selectButton("Work•");
+  }
+
+  async selectHomeCategoryButton(): Promise<void> {
+    await this.selectButton("Home•");
+  }
+
+  async selectPersonalCategoryButton(): Promise<void> {
+    await this.selectButton("Personal•");
+  }
   async selectAddNoteButton(): Promise<void> {
     await this.addNoteButton.click();
   }
