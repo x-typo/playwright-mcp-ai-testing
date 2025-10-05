@@ -4,6 +4,39 @@ export class NavigationDrawer {
   readonly page: Page;
   readonly isMob: boolean | undefined;
 
+  private readonly selectors = {
+    sidebarId: "sidebar",
+    drawerChevronButton: "drawer-chevron",
+    mobileNavigationContainer: "mobile-navigation",
+    mobileMenuItem: "Menu",
+    drawerHeading: "QA Practice",
+  } as const;
+
+  private readonly navigationLinks = [
+    "Ecommerce - Login",
+    "Spot the BUGS CHALLENGE",
+    "GraphQL Testing",
+    "API Testing",
+    "Products List - Shop",
+    "Intercept API Request",
+    "Visual Testing - GIF Page",
+    "Forms",
+    "Buttons",
+    "New Tab / Window",
+    "Btn actions",
+    "Tables",
+    "Dropdowns",
+    "Iframes",
+    "Alerts",
+    "File Upload",
+    "Date Pickers",
+    "Loader",
+    "Pagination",
+    "RV - Website",
+    "Let's connect - LinkedIn",
+    "Learn with RV - YouTube",
+  ] as const;
+
   // LOCATOR DECLARATIONS //
   idSelector: (name: string) => Locator;
   heading: (name: string) => Locator;
@@ -33,10 +66,14 @@ export class NavigationDrawer {
       page.getByRole("link", { name: new RegExp(`^${name}`) });
     this.menuPopup = (name: string) =>
       page.getByRole("tooltip", { name: new RegExp(`^${name}`) });
-    this.navDrawer = page.locator("#sidebar");
-    this.navBarButton = page.getByTestId("drawer-chevron");
-    this.navBarMobile = page.getByTestId("mobile-navigation");
-    this.navBarButtonMobile = page.getByRole("menuitem", { name: "Menu" });
+    this.navDrawer = page.locator(`#${this.selectors.sidebarId}`);
+    this.navBarButton = page.getByTestId(this.selectors.drawerChevronButton);
+    this.navBarMobile = page.getByTestId(
+      this.selectors.mobileNavigationContainer
+    );
+    this.navBarButtonMobile = page.getByRole("menuitem", {
+      name: this.selectors.mobileMenuItem,
+    });
   }
 
   // Interactions //
@@ -62,28 +99,12 @@ export class NavigationDrawer {
 
   // Verifications //
   async verifyDrawer() {
-    await expect(this.heading("QA Practice").first()).toBeVisible();
-    await expect(this.link("Ecommerce - Login")).toBeVisible();
-    await expect(this.link("Spot the BUGS CHALLENGE")).toBeVisible();
-    await expect(this.link("GraphQL Testing")).toBeVisible();
-    await expect(this.link("API Testing")).toBeVisible();
-    await expect(this.link("Products List - Shop")).toBeVisible();
-    await expect(this.link("Intercept API Request")).toBeVisible();
-    await expect(this.link("Visual Testing - GIF Page")).toBeVisible();
-    await expect(this.link("Forms")).toBeVisible();
-    await expect(this.link("Buttons")).toBeVisible();
-    await expect(this.link("New Tab / Window")).toBeVisible();
-    await expect(this.link("Btn actions")).toBeVisible();
-    await expect(this.link("Tables")).toBeVisible();
-    await expect(this.link("Dropdowns")).toBeVisible();
-    await expect(this.link("Iframes")).toBeVisible();
-    await expect(this.link("Alerts")).toBeVisible();
-    await expect(this.link("File Upload")).toBeVisible();
-    await expect(this.link("Date Pickers")).toBeVisible();
-    await expect(this.link("Loader")).toBeVisible();
-    await expect(this.link("Pagination")).toBeVisible();
-    await expect(this.link("RV - Website")).toBeVisible();
-    await expect(this.link("Let's connect - LinkedIn")).toBeVisible();
-    await expect(this.link("Learn with RV - YouTube")).toBeVisible();
+    await expect(
+      this.heading(this.selectors.drawerHeading).first()
+    ).toBeVisible();
+
+    for (const linkText of this.navigationLinks) {
+      await expect(this.link(linkText)).toBeVisible();
+    }
   }
 }

@@ -2,25 +2,33 @@ import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 
 export class ProfileSettingsPage extends BasePage {
+  private readonly selectors = {
+    pageHeading: "Profile settings",
+    accountDetailsTab: "account-details",
+    changePasswordTab: "change-password",
+    userIdInput: "user-id",
+    currentPasswordInput: "current-password",
+  } as const;
+
   constructor(page: Page, isMobile: boolean | undefined) {
     super(page, isMobile);
   }
 
   // ===== LOCATOR GETTERS=====
   get pageHeading(): Locator {
-    return this.heading("Profile settings");
+    return this.heading(this.selectors.pageHeading);
   }
   get accountDetailsTab(): Locator {
-    return this.testIdSelector("account-details");
+    return this.testIdSelector(this.selectors.accountDetailsTab);
   }
   get changePasswordTab(): Locator {
-    return this.testIdSelector("change-password");
+    return this.testIdSelector(this.selectors.changePasswordTab);
   }
   get userIdInput(): Locator {
-    return this.testIdSelector("user-id");
+    return this.testIdSelector(this.selectors.userIdInput);
   }
   get currentPasswordInput(): Locator {
-    return this.testIdSelector("current-password");
+    return this.testIdSelector(this.selectors.currentPasswordInput);
   }
   // ===== LOCATOR METHODS =====
   // ===== NAVIGATIONS =====
@@ -29,9 +37,9 @@ export class ProfileSettingsPage extends BasePage {
   }
   // ===== INTERACTIONS =====
   async openAccountDetailsTab(): Promise<void> {
-    await this.selectTestIdSelector("account-details");
+    await this.selectTestIdSelector(this.selectors.accountDetailsTab);
   }
   async openChangePasswordTab(): Promise<void> {
-    await this.selectTestIdSelector("change-password");
+    await this.selectTestIdSelector(this.selectors.changePasswordTab);
   }
 }

@@ -2,6 +2,14 @@ import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 
 export class ModalsPage extends BasePage {
+  private readonly selectors = {
+    addNoteTitleInput: "note-title",
+    addNoteDescriptionInput: "note-description",
+    submitButton: "note-submit",
+    deleteButton: "note-delete-confirm",
+    cancelButton: "Cancel",
+  } as const;
+
   constructor(page: Page, isMobile: boolean | undefined) {
     super(page, isMobile);
   }
@@ -9,23 +17,23 @@ export class ModalsPage extends BasePage {
   // ===== LOCATOR GETTERS =====
 
   get addNewNoteTitleInput(): Locator {
-    return this.testIdSelector("note-title");
+    return this.testIdSelector(this.selectors.addNoteTitleInput);
   }
 
   get addNewNoteDescriptionInput(): Locator {
-    return this.testIdSelector("note-description");
+    return this.testIdSelector(this.selectors.addNoteDescriptionInput);
   }
 
   get submitButton(): Locator {
-    return this.testIdSelector("note-submit");
+    return this.testIdSelector(this.selectors.submitButton);
   }
 
   get deleteButton(): Locator {
-    return this.testIdSelector("note-delete-confirm");
+    return this.testIdSelector(this.selectors.deleteButton);
   }
 
   get cancelButton(): Locator {
-    return this.button("Cancel");
+    return this.button(this.selectors.cancelButton);
   }
 
   // ===== LOCATOR METHODS =====

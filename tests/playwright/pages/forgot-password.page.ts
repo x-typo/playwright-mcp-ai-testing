@@ -2,13 +2,17 @@ import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 
 export class ForgotPasswordPage extends BasePage {
+  private readonly selectors = {
+    pageHeading: "Reset your password",
+  } as const;
+
   constructor(page: Page, isMobile: boolean | undefined) {
     super(page, isMobile);
   }
 
   // ===== LOCATOR GETTERS =====
   get pageHeading(): Locator {
-    return this.heading("Reset your password");
+    return this.heading(this.selectors.pageHeading);
   }
 
   // ===== NAVIGATIONS =====
