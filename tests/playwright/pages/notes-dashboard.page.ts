@@ -41,6 +41,18 @@ export class NotesDashboardPage extends BasePage {
       .getByRole("button")
       .first();
   }
+  get allTab(): Locator {
+    return this.tabButton("category-all");
+  }
+  get workTab(): Locator {
+    return this.tabButton("category-work");
+  }
+  get homeTab(): Locator {
+    return this.tabButton("category-home");
+  }
+  get personalTab(): Locator {
+    return this.tabButton("category-personal");
+  }
 
   // ===== LOCATOR METHODS =====
   noteCardTitle(name: string): Locator {
@@ -55,27 +67,9 @@ export class NotesDashboardPage extends BasePage {
     return this.testIdSelector(name);
   }
 
-  // Tabs
-  get allTab(): Locator {
-    return this.tabButton("category-all");
-  }
-  get workTab(): Locator {
-    return this.tabButton("category-work");
-  }
-  get homeTab(): Locator {
-    return this.tabButton("category-home");
-  }
-  get personalTab(): Locator {
-    return this.tabButton("category-personal");
-  }
-
   // ===== NAVIGATIONS =====
   async navigateNotesDashboardPage(): Promise<void> {
     await this.navigatePage("/notes/app");
-  }
-
-  async expectOnDashboard(): Promise<void> {
-    await this.expectVisible(this.myNotesLinkButton);
   }
 
   // ===== INTERACTIONS =====

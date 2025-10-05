@@ -52,11 +52,11 @@ export class LoginPage extends BasePage {
   }
 
   async selectForgotPasswordLink(): Promise<void> {
-    await this.forgotPasswordLink.click();
+    await this.selectLink("Forgot password");
   }
 
   async selectCreateAccountLink(): Promise<void> {
-    await this.createAccountLink.click();
+    await this.selectLink("Create a free account!");
   }
 
   async fillLoginForm({
