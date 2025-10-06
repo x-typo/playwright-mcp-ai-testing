@@ -3,7 +3,7 @@
    <br />
    <span style="font-size: 2rem; font-weight: bold;">+</span>
    <br />
-   <img width="200" src="https://gitprotect.io/blog/wp-content/uploads/2022/03/github-copilot.png" alt="GitHub Copilot"/>
+   <img width="200" src="https://www.palo-it.com/hs-fs/hubfs/Copilot_Logo-Large-Black.png?width=688&height=87&name=Copilot_Logo-Large-Black.png" alt="GitHub Copilot"/>
 </p>
 
 # AI-Powered Playwright Hybrid E2E Framework
