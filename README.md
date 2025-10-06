@@ -3,7 +3,7 @@
    <br />
    <span style="font-size: 2rem; font-weight: bold;">+</span>
    <br />
-   <img width="200" src="https://www.palo-it.com/hs-fs/hubfs/Copilot_Logo-Large-Black.png?width=688&height=87&name=Copilot_Logo-Large-Black.png" alt="GitHub Copilot"/>
+   <img width="200" src="https://talks.freelancerepublik.com/wp-content/uploads/2022/09/GitHub_Copilot_logo.svg_-1024x131.png" alt="GitHub Copilot"/>
 </p>
 
 # AI-Powered Playwright Hybrid E2E Framework
