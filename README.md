@@ -1,7 +1,7 @@
 <p align="center">
    <img width="200" src="https://applitools.com/wp-content/uploads/2022/08/Playwright_logo_long.png" alt="Playwright"/>
    <br />
-   <span style="font-size: 2rem; font-weight: bold;">+</span><br style="line-height:2;" />
+   <span style="font-size: 2rem; font-weight: bold;">+</span><br style="line-height:1;" />
    <br />
    <img width="200" src="https://talks.freelancerepublik.com/wp-content/uploads/2022/09/GitHub_Copilot_logo.svg_-1024x131.png" alt="GitHub Copilot"/>
 </p>
