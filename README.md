@@ -2,7 +2,7 @@
    <img width="200" src="https://applitools.com/wp-content/uploads/2022/08/Playwright_logo_long.png" alt="Playwright"/>
    <br />
    <span style="font-size: 2rem; font-weight: bold; line-height:1;">+</span>
-   <img src="https://via.placeholder.com/1x30/ffffff/ffffff" width="1" height="30" style="display:block;" alt="" />
+   <img src="https://via.placeholder.com/1x30/ffffff/ffffff" width="1" height="40" style="display:block;" alt="" />
     <div style="text-align:center;">
        <img width="200" src="https://www.palo-it.com/hs-fs/hubfs/Copilot_Logo-Large-Black.png?width=688&height=87&name=Copilot_Logo-Large-Black.png" alt="GitHub Copilot"/>
     </div>
