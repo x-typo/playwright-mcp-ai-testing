@@ -5,6 +5,7 @@ import { NotesDashboardPage } from "./notes-dashboard.page";
 import { ProfileSettingsPage } from "./profile-settings.page";
 import { ForgotPasswordPage } from "./forgot-password.page";
 import { RegisterPage } from "./register.page";
+import { PracticePage } from "./practice.page";
 
 export class PageFactory {
   constructor(
@@ -34,5 +35,9 @@ export class PageFactory {
 
   getRegisterPage(): RegisterPage {
     return new RegisterPage(this.page, this.isMobile);
+  }
+
+  getPracticePage(): PracticePage {
+    return new PracticePage(this.page, this.isMobile);
   }
 }

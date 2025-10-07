@@ -32,7 +32,7 @@ export class BasePage {
     return this.page.getByTestId(name);
   }
   link(name: string): Locator {
-    return this.page.getByRole("link", { name });
+    return this.page.getByRole("link", { name, exact: true });
   }
   button(name: string): Locator {
     return this.page.getByRole("button", { name });
