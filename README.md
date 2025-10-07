@@ -2,10 +2,10 @@
    <img width="200" src="https://applitools.com/wp-content/uploads/2022/08/Playwright_logo_long.png" alt="Playwright"/>
    <br />
    <span style="font-size: 2rem; font-weight: bold; line-height:1;">+</span>
-
    <br />
-   
-   <img width="200" src="https://www.palo-it.com/hs-fs/hubfs/Copilot_Logo-Large-Black.png?width=688&height=87&name=Copilot_Logo-Large-Black.png" alt="GitHub Copilot"/>
+    <span style="padding-top:16px; display:inline-block;">
+       <img width="200" src="https://www.palo-it.com/hs-fs/hubfs/Copilot_Logo-Large-Black.png?width=688&height=87&name=Copilot_Logo-Large-Black.png" alt="GitHub Copilot"/>
+    </span>
 </p>
 
 # AI-Powered Playwright Hybrid E2E Framework
