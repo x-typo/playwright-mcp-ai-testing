@@ -3,7 +3,7 @@
    <br />
    <span style="font-size: 2rem; font-weight: bold; line-height:1;">+</span>
    <br />
-    <span style="padding-top:26px; display:inline-block;">
+    <span style="display:inline-block; margin-top:26px;">
        <img width="200" src="https://www.palo-it.com/hs-fs/hubfs/Copilot_Logo-Large-Black.png?width=688&height=87&name=Copilot_Logo-Large-Black.png" alt="GitHub Copilot"/>
     </span>
 </p>
