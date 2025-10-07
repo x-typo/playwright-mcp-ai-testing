@@ -84,6 +84,19 @@ test("Create a free account link navigates to register page", async ({
   });
 });
 
+test("Practice link navigates to practice page", async ({
+  loginPage,
+  practicePage,
+}) => {
+  await test.step("Select link", async () => {
+    await loginPage.selectPracticeLink();
+  });
+
+  await test.step("Verify", async () => {
+    await expect(practicePage.pageHeading).toBeVisible();
+  });
+});
+
 // test.skip(
 //   "Accessibility Test",
 //   { tag: "@accessibility" },
