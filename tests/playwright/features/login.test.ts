@@ -86,14 +86,14 @@ test("Create a free account link navigates to register page", async ({
 
 test("Practice link navigates to practice page", async ({
   loginPage,
-  practicePage,
+  practicesPage,
 }) => {
   await test.step("Select link", async () => {
     await loginPage.selectPracticeLink();
   });
 
   await test.step("Verify", async () => {
-    await expect(practicePage.pageHeading).toBeVisible();
+    await expect(practicesPage.pageHeading).toBeVisible();
   });
 });
 

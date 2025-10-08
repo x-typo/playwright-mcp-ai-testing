@@ -16,7 +16,7 @@ import { ModalsPage } from "../tests/playwright/pages/modals.page";
 import { ProfileSettingsPage } from "../tests/playwright/pages/profile-settings.page";
 import { ForgotPasswordPage } from "../tests/playwright/pages/forgot-password.page";
 import { RegisterPage } from "../tests/playwright/pages/register.page";
-import { PracticePage } from "../tests/playwright/pages/practice.page";
+import { PracticesPage } from "../tests/playwright/pages/practices.page";
 
 dotenv.config();
 
@@ -69,7 +69,7 @@ type AutomationFixtures = {
   profileSettingsPage: ProfileSettingsPage;
   forgotPasswordPage: ForgotPasswordPage;
   registerPage: RegisterPage;
-  practicePage: PracticePage;
+  practicesPage: PracticesPage;
 };
 
 export const test = base.extend<AutomationFixtures>({
@@ -134,8 +134,8 @@ export const test = base.extend<AutomationFixtures>({
   registerPage: async ({ pageFactory }, use) => {
     await use(pageFactory.getRegisterPage());
   },
-  practicePage: async ({ pageFactory }, use) => {
-    await use(pageFactory.getPracticePage());
+  practicesPage: async ({ pageFactory }, use) => {
+    await use(pageFactory.getPracticesPage());
   },
 
   // Accessibility tools (optional)
