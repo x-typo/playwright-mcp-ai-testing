@@ -10,7 +10,7 @@ export class LoginPage extends BasePage {
     googleLoginButton: "login-with-google",
     forgotPasswordLink: "Forgot password",
     createAccountLink: "Create a free account!",
-    practiceLink: "Practice",
+    practicesBreadcrumb: "Practice",
   } as const;
 
   constructor(page: Page, isMobile: boolean | undefined) {
@@ -39,8 +39,8 @@ export class LoginPage extends BasePage {
   get createAccountLink(): Locator {
     return this.link(this.selectors.createAccountLink);
   }
-  get practiceBreadcrumbLink(): Locator {
-    return this.link(this.selectors.practiceLink);
+  get practiceBreadcrumb(): Locator {
+    return this.link(this.selectors.practicesBreadcrumb);
   }
 
   // ===== NAVIGATIONS =====
@@ -73,7 +73,7 @@ export class LoginPage extends BasePage {
     await this.selectLink(this.selectors.createAccountLink);
   }
 
-  async selectPracticeLink(): Promise<void> {
-    await this.selectLink(this.selectors.practiceLink);
+  async selectPracticesBreadcrumb(): Promise<void> {
+    await this.selectLink(this.selectors.practicesBreadcrumb);
   }
 }

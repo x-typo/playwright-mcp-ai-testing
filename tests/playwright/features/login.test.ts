@@ -84,12 +84,12 @@ test("Create a free account link navigates to register page", async ({
   });
 });
 
-test("Practice link navigates to practice page", async ({
+test("Practice link navigates to practices page", async ({
   loginPage,
   practicesPage,
 }) => {
-  await test.step("Select link", async () => {
-    await loginPage.selectPracticeLink();
+  await test.step("Select breadcrumb", async () => {
+    await loginPage.selectPracticesBreadcrumb();
   });
 
   await test.step("Verify", async () => {
