@@ -94,6 +94,7 @@ test("Practice link navigates to practices page", async ({
 
   await test.step("Verify", async () => {
     await expect(practicesPage.pageHeading).toBeVisible();
+    await expect(practicesPage.searchInput).toBeVisible();
   });
 });
 
