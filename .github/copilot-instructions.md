@@ -38,7 +38,17 @@ npm run report         # View HTML test reports
 - **Imports**: Always use `{ test, expect } from "../../../fixtures/automation-fixtures"`
 - **Tags**: Use `{ tag: ["@smoke", "@regression", "@visual"] }` for test filtering
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
-- **Debugging**: After creating or updating a test, execute `npx playwright test --config=./configs/playwright.config.ts --project=chromeUI --debug path/to/test-file --grep "Scenario Name"` to debug it interactively (replace the path and scenario name with your actual values). Avoid `npm run chromeUI` unless the user specifically needs a headless run, and do **not** run the full suite unless the user explicitly requests it.
+- **Debugging**: After creating or updating a test, follow this two-step workflow:
+
+- Run a quick verification (non-interactive) first:
+
+  - npm run chromeUI -- path/to/test-file -g "Scenario Name"
+  - (You can omit the path and use `-g` alone to grep across the suite.)
+
+- If the quick run passes and you need interactive debugging, then run the inspector:
+  - npm run chromeDebug -- path/to/test-file -g "Scenario Name"
+
+Both `chromeUI` and `chromeDebug` are defined in `package.json` and already include the dotenv quiet flags so tip messages are suppressed. When debugging interactively prefer `--workers=1` to keep the session single-threaded.
 
 ### Page Object Usage
 
