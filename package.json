@@ -19,8 +19,7 @@
     "androidLambdatest": "wdio run ./configs/wdio.android.config.ts",
     "uiMode": "npx playwright test --ui",
     "codeGenDesktop": "npx playwright codegen https://practice.expandtesting.com/notes/app",
-    "codeGenMobile": "npx playwright codegen --device=\"iPhone 14\" https://practice.expandtesting.com/notes/app",
-    "aiChrome": "npx @playwright/mcp@latest --extension --viewport-size=1920x1080 --output-dir=./mcp-artifacts"
+    "codeGenMobile": "npx playwright codegen --device=\"iPhone 14\" https://practice.expandtesting.com/notes/app"
   },
   "keywords": [],
   "license": "ISC",
