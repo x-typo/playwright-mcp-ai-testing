@@ -39,10 +39,8 @@ npm run report         # View HTML test reports
 - **Tags**: Use `{ tag: ["@smoke", "@regression", "@visual"] }` for test filtering
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
 - **Debugging**: After creating or updating a test, follow this two-step workflow:
-  1. Run a quick verification (non-interactive) with `npx playwright test --config=./configs/playwright.config.ts --project=chromeUI -g "TEST_NAME_HERE"` to confirm the test passes.
-  2. If the quick run succeeds and you need the inspector, run `npx playwright test --config=./configs/playwright.config.ts --project=chromeUI --debug -g "TEST_NAME_HERE" --workers=1`.
-
-Both commands target the `chromeUI` and `chromeDebug` projects defined in `configs/playwright.config.ts`. When debugging interactively prefer `--workers=1` to keep the session single-threaded.
+  1. Temporarily mark the target test with `.only` so it runs in isolation, then run `npm run chromeUI` for a quick verification pass.
+  2. If the isolated run fails, fix the issue before moving on. Once it passes, run `npm run chromeDebug`; when that passes, remove `.only` and proceed.
 
 ### Page Object Usage
 
