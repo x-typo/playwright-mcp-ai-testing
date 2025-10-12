@@ -40,7 +40,7 @@ npm run report         # View HTML test reports
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
 - **Debugging**: After creating or updating a test, follow this two-step workflow:
   1. Temporarily mark the target test with `.only` so it runs in isolation, then run `npm run chromeUI` for a quick verification pass.
-  2. If the isolated run fails, fix the issue before moving on. Once it passes, run `npm run chromeDebug`; when that passes, remove `.fixme` and proceed.
+  2. If the isolated run fails, fix the issue before moving on. Once it passes, run `npm run chromeDebug`; when that passes, remove `.only` and proceed.
 
 ### Page Object Usage
 
