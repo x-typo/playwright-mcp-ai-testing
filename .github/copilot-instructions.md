@@ -39,8 +39,8 @@ npm run report         # View HTML test reports
 - **Tags**: Use `{ tag: ["@smoke", "@regression", "@visual"] }` for test filtering
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
 - **Debugging**: After creating or updating a test, follow this two-step workflow:
-  1. Temporarily mark the target test with `.only` so it runs in isolation, then run `npm run chromeDebug` for a quick verification pass.
-  2. If the isolated run fails, fix the issue before moving on. Once it passes, run `npm run chromeDebug`; when that passes, remove `.only` and proceed.
+  1. Temporarily mark the target test with `.only` so it runs in isolation, then run `npm run chromeUI` for a quick verification pass.
+  2. If the isolated run fails, fix the issue before moving on. Once it passes, run `npm run chromeDebug`; when that passes, remove `.fixme` and proceed.
 
 ### Page Object Usage
 
