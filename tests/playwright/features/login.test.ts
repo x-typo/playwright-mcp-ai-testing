@@ -84,7 +84,7 @@ test("Create a free account link navigates to register page", async ({
   });
 });
 
-test.fixme("Practice link navigates to practices page", async ({
+test("Practice link navigates to practices page", async ({
   loginPage,
   practicesPage,
 }) => {
