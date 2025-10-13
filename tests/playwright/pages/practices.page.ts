@@ -4,7 +4,6 @@ import { BasePage } from "./base.page";
 export class PracticesPage extends BasePage {
   private readonly selectors = {
     pageHeading: "Automation Testing Practice WebSite for QA and Developers",
-    testCasesLink: "Test Cases",
     searchInput: "Search an example...",
   } as const;
 
@@ -17,11 +16,12 @@ export class PracticesPage extends BasePage {
     return this.heading(this.selectors.pageHeading);
   }
 
-  get testCasesButton(): Locator {
-    return this.link(this.selectors.testCasesLink);
-  }
-
   get searchInput(): Locator {
     return this.inputBox(this.selectors.searchInput);
+  }
+
+  // ===== NAVIGATIONS =====
+  async navigatePracticesPage(): Promise<void> {
+    await this.navigatePage("");
   }
 }
