@@ -5,7 +5,7 @@ test.describe("Practices page", () => {
     await practicesPage.navigatePracticesPage();
   });
 
-  test.only(
+  test(
     "Page Validation",
     { tag: ["@smoke", "@regression"] },
     async ({ practicesPage }) => {
