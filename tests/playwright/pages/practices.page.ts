@@ -20,8 +20,18 @@ export class PracticesPage extends BasePage {
     return this.inputBox(this.selectors.searchInput);
   }
 
+  // ===== LOCATOR METHODS =====
+  practiceCardLink(title: string): Locator {
+    return this.link(title);
+  }
+
   // ===== NAVIGATIONS =====
   async navigatePracticesPage(): Promise<void> {
     await this.navigatePage("");
+  }
+
+  // ===== INTERACTIONS =====
+  async searchPractice(term: string): Promise<void> {
+    await this.searchInput.fill(term);
   }
 }
