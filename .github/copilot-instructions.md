@@ -37,10 +37,13 @@ npm run report         # View HTML test reports
 - **Test Location**: `tests/playwright/features/*.test.ts`
 - **Imports**: Always use `{ test, expect } from "../../../fixtures/automation-fixtures"`
 - **Tags**: Use `{ tag: ["@smoke", "@regression", "@visual"] }` for test filtering
+- **Placement**: Insert new scenarios in the feature file section that matches the product area and maintain ordering by feature priority so high-value flows appear first.
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
 - **Debugging**: After creating or updating a test, follow this two-step workflow:
   1. Temporarily mark the target test with `.only` so it runs in isolation, then run `npm run chromeUI` for a quick verification pass.
   2. If the isolated run fails, fix the issue before moving on. Once it passes, run `npm run chromeDebug`; when that passes, remove `.only` and proceed.
+- Treat this workflow as a mandatory pre-check before raising a PR or requesting review so failures never surprise CI.
+- **Report coverage gaps**: When adding or modifying tests, briefly note any remaining high-risk scenarios or data permutations that stay manual so reviewers understand the residual risk surface.
 
 ### Page Object Usage
 
