@@ -14,7 +14,7 @@ When the user asks for suggestions, feedback, or ideas, evaluate available sourc
 
 ## Architecture Overview
 
-This is a **hybrid testing framework** combining Playwright UI automation with API testing capabilities. The architecture follows these key patterns:
+This is a **hybrid testing framework** combining Playwright UI automation with API testing capabilities and is explicitly **model-driven by using AI** to guide scenarios and maintainability. The architecture follows these key patterns:
 
 - **Fixtures-based approach**: All dependencies injected through `automation-fixtures.ts`
 - **Page Object Model**: UI components encapsulated in `tests/playwright/pages/`
