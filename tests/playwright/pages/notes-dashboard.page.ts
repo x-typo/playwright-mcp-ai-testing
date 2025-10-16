@@ -12,6 +12,7 @@ export class NotesDashboardPage extends BasePage {
     editCardButton: "note-edit",
     deleteCardButton: "note-delete",
     profileSettingsLinkButton: "profile",
+    logoutButton: "Logout",
     noteCardTitle: "note-card-title",
     noteCardDescription: "note-card-description",
     allCategory: "All",
@@ -51,6 +52,9 @@ export class NotesDashboardPage extends BasePage {
   }
   get profileSettingsLinkButton(): Locator {
     return this.testIdSelector(this.selectors.profileSettingsLinkButton);
+  }
+  get logoutButton(): Locator {
+    return this.button(this.selectors.logoutButton);
   }
   get mobileNavigationToggle(): Locator {
     return this.page
@@ -126,5 +130,11 @@ export class NotesDashboardPage extends BasePage {
       await this.mobileNavigationToggle.click();
     }
     await this.selectTestIdSelector(this.selectors.profileSettingsLinkButton);
+  }
+
+  async selectNavigationMenuOnMobile(): Promise<void> {
+    if (this.isMobile) {
+      await this.mobileNavigationToggle.click();
+    }
   }
 }

@@ -19,6 +19,24 @@ test.describe("Notes Dashboard Page", () => {
   );
 
   test(
+    "Verify MyNotes navigation bar",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage }) => {
+      await test.step("Verify navigation items", async () => {
+        if (notesDashboardPage.isMobile) {
+          await notesDashboardPage.selectNavigationMenuOnMobile();
+        }
+
+        await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
+        await expect(
+          notesDashboardPage.profileSettingsLinkButton
+        ).toBeVisible();
+        await expect(notesDashboardPage.logoutButton).toBeVisible();
+      });
+    }
+  );
+
+  test(
     "Visual Test",
     { tag: ["@visual", "@smoke", "@regression"] },
     async ({ notesDashboardPage }) => {
