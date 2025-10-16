@@ -37,37 +37,6 @@ test.describe("Notes Dashboard Page", () => {
   );
 
   test(
-    "Visual Test",
-    { tag: ["@visual", "@smoke", "@regression"] },
-    async ({ notesDashboardPage }) => {
-      const snapshotName = "notesDashboardPage_.png";
-      const ratioAllowed = 0.03;
-
-      await test.step("Perform visual comparison", async () => {
-        await expect(notesDashboardPage.text("notes completed")).toBeVisible();
-        expect(
-          await notesDashboardPage.page.screenshot({
-            animations: "disabled",
-            mask: [notesDashboardPage.testIdSelector("notes-list")],
-          })
-        ).toMatchSnapshot(snapshotName, { maxDiffPixelRatio: ratioAllowed });
-      });
-    }
-  );
-
-  test("No Notes Displayed", async ({ notesDashboardPage }) => {
-    await test.step("Select tab", async () => {
-      await notesDashboardPage.selectPersonalCategoryButton();
-    });
-
-    await test.step("Verify", async () => {
-      await expect(
-        notesDashboardPage.text("You don't have any notes in")
-      ).toBeVisible();
-    });
-  });
-
-  test(
     "Search Notes",
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage }) => {
@@ -82,70 +51,6 @@ test.describe("Notes Dashboard Page", () => {
       await test.step("Verify", async () => {
         await expect(notesDashboardPage.noteCardTitle("work1")).toBeVisible();
         await expect(notesDashboardPage.noteCardTitle("work2")).toBeHidden();
-      });
-    }
-  );
-
-  test(
-    "Profile Page Navigation",
-    { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, profileSettingsPage }) => {
-      await test.step("Open profile settings", async () => {
-        await notesDashboardPage.selectProfileSettingsButton();
-      });
-
-      await test.step("Verify", async () => {
-        await expect(profileSettingsPage.pageHeading).toBeVisible();
-      });
-    }
-  );
-
-  test(
-    "'Add New Note' Modal",
-    { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, modalsPage }) => {
-      await test.step("View modal", async () => {
-        await notesDashboardPage.selectAddNoteButton();
-      });
-
-      await test.step("Verify", async () => {
-        await expect(modalsPage.modalHeading("Add new note")).toBeVisible();
-        await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
-        await expect(modalsPage.submitButton).toBeVisible();
-      });
-    }
-  );
-
-  test(
-    "'Edit Note' Modal",
-    { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, modalsPage }) => {
-      await test.step("Open modal", async () => {
-        await notesDashboardPage.searchNotes("work2");
-        await notesDashboardPage.selectEditButton();
-      });
-
-      await test.step("Verify", async () => {
-        await expect(modalsPage.modalHeading("Edit note")).toBeVisible();
-        await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
-        await expect(modalsPage.submitButton).toBeVisible();
-      });
-    }
-  );
-
-  test(
-    "'Delete Note' Modal",
-    { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, modalsPage }) => {
-      await test.step("Open modal", async () => {
-        await notesDashboardPage.searchNotes("work2");
-        await notesDashboardPage.selectDeleteButton();
-      });
-
-      await test.step("Verify", async () => {
-        await expect(modalsPage.modalHeading("Delete note?")).toBeVisible();
-        await expect(modalsPage.deleteButton).toBeVisible();
-        await expect(modalsPage.cancelButton).toBeVisible();
       });
     }
   );
@@ -271,6 +176,101 @@ test.describe("Notes Dashboard Page", () => {
         await expect(
           notesDashboardPage.noteCardTitle(noteData.title)
         ).toBeHidden();
+      });
+    }
+  );
+
+  test(
+    "'Add New Note' Modal",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage, modalsPage }) => {
+      await test.step("View modal", async () => {
+        await notesDashboardPage.selectAddNoteButton();
+      });
+
+      await test.step("Verify", async () => {
+        await expect(modalsPage.modalHeading("Add new note")).toBeVisible();
+        await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
+        await expect(modalsPage.submitButton).toBeVisible();
+      });
+    }
+  );
+
+  test(
+    "'Edit Note' Modal",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage, modalsPage }) => {
+      await test.step("Open modal", async () => {
+        await notesDashboardPage.searchNotes("work2");
+        await notesDashboardPage.selectEditButton();
+      });
+
+      await test.step("Verify", async () => {
+        await expect(modalsPage.modalHeading("Edit note")).toBeVisible();
+        await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
+        await expect(modalsPage.submitButton).toBeVisible();
+      });
+    }
+  );
+
+  test(
+    "'Delete Note' Modal",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage, modalsPage }) => {
+      await test.step("Open modal", async () => {
+        await notesDashboardPage.searchNotes("work2");
+        await notesDashboardPage.selectDeleteButton();
+      });
+
+      await test.step("Verify", async () => {
+        await expect(modalsPage.modalHeading("Delete note?")).toBeVisible();
+        await expect(modalsPage.deleteButton).toBeVisible();
+        await expect(modalsPage.cancelButton).toBeVisible();
+      });
+    }
+  );
+
+  test(
+    "Profile Page Navigation",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage, profileSettingsPage }) => {
+      await test.step("Open profile settings", async () => {
+        await notesDashboardPage.selectProfileSettingsButton();
+      });
+
+      await test.step("Verify", async () => {
+        await expect(profileSettingsPage.pageHeading).toBeVisible();
+      });
+    }
+  );
+
+  test("No Notes Displayed", async ({ notesDashboardPage }) => {
+    await test.step("Select tab", async () => {
+      await notesDashboardPage.selectPersonalCategoryButton();
+    });
+
+    await test.step("Verify", async () => {
+      await expect(
+        notesDashboardPage.text("You don't have any notes in")
+      ).toBeVisible();
+    });
+  });
+
+  test(
+    "Visual Test",
+    { tag: ["@visual", "@smoke", "@regression"] },
+    async ({ notesDashboardPage }) => {
+      const snapshotName = "notesDashboardPage_.png";
+      const ratioAllowed = 0.03;
+
+      await test.step("Perform visual comparison", async () => {
+        await expect(notesDashboardPage.text("notes completed")).toBeVisible();
+        expect(
+          await notesDashboardPage.page.screenshot({
+            animations: "disabled",
+            mask: [notesDashboardPage.testIdSelector("notes-list")],
+          })
+        ).toMatchSnapshot(snapshotName, { maxDiffPixelRatio: ratioAllowed });
       });
     }
   );
