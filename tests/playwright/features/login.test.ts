@@ -39,24 +39,33 @@ test("Successful Login", async ({ loginPage, notesDashboardPage }) => {
   });
 });
 
-test(
-  "Visual Test",
-  { tag: ["@visual", "@smoke", "@regression"] },
-  async ({ loginPage }) => {
-    const snapshotName = "loginPage_.png";
-    const ratioAllowed = 0.03;
-
-    await test.step("Perform visual comparison", async () => {
-      await expect(loginPage.emailInputBox).toBeVisible();
-      expect(
-        await loginPage.page.screenshot({
-          animations: "disabled",
-          mask: [loginPage.googleLoginButton],
-        })
-      ).toMatchSnapshot(snapshotName, { maxDiffPixelRatio: ratioAllowed });
+test("Invalid Password", async ({ loginPage }) => {
+  await test.step("Submit invalid password", async () => {
+    await loginPage.login({
+      emailAddress: "email@email.com",
+      password: "pass",
     });
-  }
-);
+  });
+
+  await test.step("Verify", async () => {
+    await expect(
+      loginPage.text("Password should be between 6 and 30 characters")
+    ).toBeVisible();
+  });
+});
+
+test("Invalid Email Address", async ({ loginPage }) => {
+  await test.step("Submit invalid email address", async () => {
+    await loginPage.login({
+      emailAddress: "invalidAddress",
+      password: "password12345!",
+    });
+  });
+
+  await test.step("Verify", async () => {
+    await expect(loginPage.text("Email address is invalid")).toBeVisible();
+  });
+});
 
 test("Forgot password link navigates to reset password page", async ({
   loginPage,
@@ -98,6 +107,25 @@ test("Practice link navigates to practices page", async ({
   });
 });
 
+test(
+  "Visual Test",
+  { tag: ["@visual", "@smoke", "@regression"] },
+  async ({ loginPage }) => {
+    const snapshotName = "loginPage_.png";
+    const ratioAllowed = 0.03;
+
+    await test.step("Perform visual comparison", async () => {
+      await expect(loginPage.emailInputBox).toBeVisible();
+      expect(
+        await loginPage.page.screenshot({
+          animations: "disabled",
+          mask: [loginPage.googleLoginButton],
+        })
+      ).toMatchSnapshot(snapshotName, { maxDiffPixelRatio: ratioAllowed });
+    });
+  }
+);
+
 // test.skip(
 //   "Accessibility Test",
 //   { tag: "@accessibility" },
@@ -109,31 +137,3 @@ test("Practice link navigates to practices page", async ({
 //     });
 //   }
 // );
-
-test("Invalid Password", async ({ loginPage }) => {
-  await test.step("Submit invalid password", async () => {
-    await loginPage.login({
-      emailAddress: "email@email.com",
-      password: "pass",
-    });
-  });
-
-  await test.step("Verify", async () => {
-    await expect(
-      loginPage.text("Password should be between 6 and 30 characters")
-    ).toBeVisible();
-  });
-});
-
-test("Invalid Email Address", async ({ loginPage }) => {
-  await test.step("Submit invalid email address", async () => {
-    await loginPage.login({
-      emailAddress: "invalidAddress",
-      password: "password12345!",
-    });
-  });
-
-  await test.step("Verify", async () => {
-    await expect(loginPage.text("Email address is invalid")).toBeVisible();
-  });
-});
