@@ -1,7 +1,7 @@
 import { test, expect } from "../../../fixtures/automation-fixtures";
 
 test.describe("Practices page", () => {
-  test.beforeEach("Navigate to practices page", async ({ practicesPage }) => {
+  test.beforeEach("Navigate to page", async ({ practicesPage }) => {
     await practicesPage.navigatePracticesPage();
   });
 

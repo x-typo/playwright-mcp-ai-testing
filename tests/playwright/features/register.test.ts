@@ -1,10 +1,9 @@
-import { test, expect } from "../../../fixtures/automation-fixtures";
-import { asUser } from "../../../auth/authManager";
+import { test, expect, asUser } from "../../../fixtures/automation-fixtures";
 
 test.use(asUser("guest"));
 
 test.describe("Register Page", () => {
-  test.beforeEach("Navigate to register page", async ({ registerPage }) => {
+  test.beforeEach("Navigate to page", async ({ registerPage }) => {
     await registerPage.navigateRegisterPage();
   });
 
