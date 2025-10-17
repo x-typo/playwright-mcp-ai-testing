@@ -67,7 +67,7 @@ test("Invalid Email Address", async ({ loginPage }) => {
   });
 });
 
-test("Forgot password link navigates to reset password page", async ({
+test("Forgot Password Page Navigation", async ({
   loginPage,
   forgotPasswordPage,
 }) => {
@@ -80,10 +80,7 @@ test("Forgot password link navigates to reset password page", async ({
   });
 });
 
-test("Create a free account link navigates to register page", async ({
-  loginPage,
-  registerPage,
-}) => {
+test("Register Page Navigation", async ({ loginPage, registerPage }) => {
   await test.step("Select link", async () => {
     await loginPage.selectCreateAccountLink();
   });
@@ -93,10 +90,7 @@ test("Create a free account link navigates to register page", async ({
   });
 });
 
-test("Practice link navigates to practices page", async ({
-  loginPage,
-  practicesPage,
-}) => {
+test("Practices Page Navigation", async ({ loginPage, practicesPage }) => {
   await test.step("Select breadcrumb", async () => {
     await loginPage.selectPracticesBreadcrumb();
   });
