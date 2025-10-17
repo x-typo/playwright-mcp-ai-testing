@@ -5,13 +5,18 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { USERS_ENDPOINTS } from "../../api/endpoints/users-endpoints";
 
-dotenv.config({
-  path: ".env",
-  quiet: true,
-});
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const rootEnvPath = path.resolve(__dirname, "../../.env");
+
+if (!process.env.DOTENV_CONFIG_QUIET) {
+  process.env.DOTENV_CONFIG_QUIET = "true";
+}
+
+dotenv.config({
+  path: rootEnvPath,
+  quiet: true,
+});
 
 const storageStateDir = path.resolve(__dirname, "../../auth/storageStates");
 const storageStatePath = path.join(storageStateDir, "mainAccountSetup.json");

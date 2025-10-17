@@ -3,11 +3,19 @@ import {
   devices,
   type PlaywrightTestConfig,
 } from "@playwright/test";
+import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const rootEnvPath = path.resolve(__dirname, "../.env");
+
+if (!process.env.DOTENV_CONFIG_QUIET) {
+  process.env.DOTENV_CONFIG_QUIET = "true";
+}
+
+dotenv.config({ path: rootEnvPath });
 
 const MainAccountFile = path.resolve(
   __dirname,
