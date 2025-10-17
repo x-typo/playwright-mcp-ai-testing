@@ -18,8 +18,6 @@ import { ForgotPasswordPage } from "../tests/playwright/pages/forgot-password.pa
 import { RegisterPage } from "../tests/playwright/pages/register.page";
 import { PracticesPage } from "../tests/playwright/pages/practices.page";
 
-dotenv.config({ quiet: true });
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
