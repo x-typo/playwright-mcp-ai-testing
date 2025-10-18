@@ -48,4 +48,23 @@ test.describe("Practices page", () => {
       await expect(notesDashboardPage.addNoteButton).toBeVisible();
     });
   });
+
+  test(
+    "Visual Test",
+    { tag: ["@visual", "@smoke", "@regression"] },
+    async ({ practicesPage }) => {
+      const snapshotName = "practicesPage_.png";
+      const ratioAllowed = 0.03;
+
+      await test.step("Perform visual comparison", async () => {
+        await expect(practicesPage.searchInput).toBeVisible();
+        expect(
+          await practicesPage.page.screenshot({
+            animations: "disabled",
+            mask: [],
+          })
+        ).toMatchSnapshot(snapshotName, { maxDiffPixelRatio: ratioAllowed });
+      });
+    }
+  );
 });
