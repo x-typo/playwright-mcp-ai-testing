@@ -49,7 +49,7 @@ test.describe("Practices page", () => {
     });
   });
 
-  test.only(
+  test(
     "Visual Test",
     { tag: ["@visual", "@smoke", "@regression"] },
     async ({ practicesPage }) => {
