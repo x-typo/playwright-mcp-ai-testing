@@ -8,7 +8,7 @@ test.describe("Notes Register Page", () => {
   });
 
   test(
-    "Page Validation",
+    "Verify Page Elements",
     { tag: ["@smoke", "@regression"] },
     async ({ notesRegisterPage }) => {
       await test.step("Verify", async () => {
@@ -18,7 +18,7 @@ test.describe("Notes Register Page", () => {
   );
 
   test(
-    "Visual Test",
+    "Visual Regression",
     { tag: ["@visual", "@smoke", "@regression"] },
     async ({ notesRegisterPage }) => {
       const snapshotName = "notesRegisterPage_.png";
