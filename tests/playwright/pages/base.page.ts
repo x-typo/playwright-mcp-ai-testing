@@ -25,6 +25,9 @@ export class BasePage {
   text(text: string): Locator {
     return this.page.getByText(text);
   }
+  exactText(text: string): Locator {
+    return this.page.getByText(text, { exact: true });
+  }
   image(name: string): Locator {
     return this.page.getByRole("img", { name });
   }

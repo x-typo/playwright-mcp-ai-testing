@@ -18,6 +18,25 @@ test.describe("Notes Register Page", () => {
   );
 
   test(
+    "Required Field Errors",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesRegisterPage }) => {
+      await test.step("Submit without input", async () => {
+        await notesRegisterPage.selectRegisterButton();
+      });
+
+      await test.step("Verify", async () => {
+        await expect(notesRegisterPage.emailRequiredError).toBeVisible();
+        await expect(notesRegisterPage.nameRequiredError).toBeVisible();
+        await expect(notesRegisterPage.passwordRequiredError).toBeVisible();
+        await expect(
+          notesRegisterPage.confirmPasswordRequiredError
+        ).toBeVisible();
+      });
+    }
+  );
+
+  test(
     "Visual Regression",
     { tag: ["@visual", "@smoke", "@regression"] },
     async ({ notesRegisterPage }) => {
