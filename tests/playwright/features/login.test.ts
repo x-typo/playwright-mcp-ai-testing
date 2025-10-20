@@ -75,7 +75,10 @@ test.describe("Login Page", () => {
     });
   });
 
-  test("Register Page Navigation", async ({ loginPage, notesRegisterPage }) => {
+  test("Notes Register Page Navigation", async ({
+    loginPage,
+    notesRegisterPage,
+  }) => {
     await test.step("Select link", async () => {
       await loginPage.selectCreateAccountLink();
     });
