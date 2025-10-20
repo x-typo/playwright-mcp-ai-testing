@@ -75,13 +75,13 @@ test.describe("Login Page", () => {
     });
   });
 
-  test("Register Page Navigation", async ({ loginPage, registerPage }) => {
+  test("Register Page Navigation", async ({ loginPage, notesRegisterPage }) => {
     await test.step("Select link", async () => {
       await loginPage.selectCreateAccountLink();
     });
 
     await test.step("Verify", async () => {
-      await expect(registerPage.pageHeading).toBeVisible();
+      await expect(notesRegisterPage.pageHeading).toBeVisible();
     });
   });
 

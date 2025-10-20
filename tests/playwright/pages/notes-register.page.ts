@@ -1,7 +1,7 @@
 import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 
-export class RegisterPage extends BasePage {
+export class NotesRegisterPage extends BasePage {
   private readonly selectors = {
     pageHeading: "Register",
   } as const;
@@ -16,7 +16,7 @@ export class RegisterPage extends BasePage {
   }
 
   // ===== NAVIGATION =====
-  async navigateRegisterPage(): Promise<void> {
+  async navigateNotesRegisterPage(): Promise<void> {
     await this.navigatePage("/notes/app/register");
   }
 }

@@ -15,7 +15,7 @@ import { NotesDashboardPage } from "../tests/playwright/pages/notes-dashboard.pa
 import { ModalsPage } from "../tests/playwright/pages/modals.page";
 import { ProfileSettingsPage } from "../tests/playwright/pages/profile-settings.page";
 import { ForgotPasswordPage } from "../tests/playwright/pages/forgot-password.page";
-import { RegisterPage } from "../tests/playwright/pages/register.page";
+import { NotesRegisterPage } from "../tests/playwright/pages/notes-register.page";
 import { PracticesPage } from "../tests/playwright/pages/practices.page";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -66,7 +66,7 @@ type AutomationFixtures = {
   modalsPage: ModalsPage;
   profileSettingsPage: ProfileSettingsPage;
   forgotPasswordPage: ForgotPasswordPage;
-  registerPage: RegisterPage;
+  notesRegisterPage: NotesRegisterPage;
   practicesPage: PracticesPage;
 };
 
@@ -129,8 +129,8 @@ export const test = base.extend<AutomationFixtures>({
   forgotPasswordPage: async ({ pageFactory }, use) => {
     await use(pageFactory.getForgotPasswordPage());
   },
-  registerPage: async ({ pageFactory }, use) => {
-    await use(pageFactory.getRegisterPage());
+  notesRegisterPage: async ({ pageFactory }, use) => {
+    await use(pageFactory.getNotesRegisterPage());
   },
   practicesPage: async ({ pageFactory }, use) => {
     await use(pageFactory.getPracticesPage());
