@@ -16,4 +16,22 @@ test.describe("Notes Register Page", () => {
       });
     }
   );
+
+  test(
+    "Visual Test",
+    { tag: ["@visual", "@smoke", "@regression"] },
+    async ({ notesRegisterPage }) => {
+      const snapshotName = "notesRegisterPage_.png";
+      const ratioAllowed = 0.03;
+
+      await test.step("Perform visual comparison", async () => {
+        await expect(notesRegisterPage.pageHeading).toBeVisible();
+        expect(
+          await notesRegisterPage.page.screenshot({
+            animations: "disabled",
+          })
+        ).toMatchSnapshot(snapshotName, { maxDiffPixelRatio: ratioAllowed });
+      });
+    }
+  );
 });
