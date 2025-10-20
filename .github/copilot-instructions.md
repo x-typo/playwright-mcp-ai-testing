@@ -37,6 +37,7 @@ npm run report         # View HTML test reports
 - **Test Location**: `tests/playwright/features/*.test.ts`
 - **Imports**: Always use `{ test, expect } from "../../../fixtures/automation-fixtures"`
 - **Tags**: Use `{ tag: ["@smoke", "@regression", "@visual"] }` for test filtering
+- **Test Naming**: Use **Title Case** and keep names **concise** (2-4 words). Focus on the action or outcome being tested (e.g., "Verify Page Elements", "Successful Login", "Visual Regression", "Invalid Password", "Search Notes").
 - **Placement**: Insert new scenarios in the feature file section that matches the product area and maintain ordering by feature priority so high-value flows appear first.
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
 - **Debugging**: After creating or updating a test, follow this two-step workflow:
