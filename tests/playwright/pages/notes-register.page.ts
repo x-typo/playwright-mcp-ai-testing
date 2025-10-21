@@ -13,6 +13,7 @@ export class NotesRegisterPage extends BasePage {
     nameRequiredError: "User name is required",
     passwordRequiredError: "Password is required",
     confirmPasswordRequiredError: "Confirm Password is required",
+    loginLink: "Log in here!",
   } as const;
 
   constructor(page: Page, isMobile: boolean | undefined) {
@@ -60,6 +61,10 @@ export class NotesRegisterPage extends BasePage {
     return this.exactText(this.selectors.confirmPasswordRequiredError);
   }
 
+  get loginLink(): Locator {
+    return this.link(this.selectors.loginLink);
+  }
+
   // ===== NAVIGATION =====
   async navigateNotesRegisterPage(): Promise<void> {
     await this.navigatePage("/notes/app/register");
@@ -68,5 +73,9 @@ export class NotesRegisterPage extends BasePage {
   // ===== INTERACTIONS =====
   async selectRegisterButton(): Promise<void> {
     await this.selectTestIdSelector(this.selectors.registerButton);
+  }
+
+  async selectLoginLink(): Promise<void> {
+    await this.selectLink(this.selectors.loginLink);
   }
 }
