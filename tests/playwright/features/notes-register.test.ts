@@ -53,4 +53,20 @@ test.describe("Notes Register Page", () => {
       });
     }
   );
+
+  test(
+    "Navigate to Login Page",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesRegisterPage, loginPage }) => {
+      await test.step("Select login link", async () => {
+        await notesRegisterPage.selectLoginLink();
+      });
+
+      await test.step("Verify login page elements", async () => {
+        await expect(loginPage.loginPageHeading).toBeVisible();
+        await expect(loginPage.emailInputBox).toBeVisible();
+        await expect(loginPage.passwordInputBox).toBeVisible();
+      });
+    }
+  );
 });
