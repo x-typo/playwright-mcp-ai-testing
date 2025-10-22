@@ -88,7 +88,10 @@ test.describe("Login Page", () => {
     });
   });
 
-  test("Practices Page Navigation", async ({ loginPage, practicesPage }) => {
+  test("Navigate to Practice Page via Breadcrumb", async ({
+    loginPage,
+    practicesPage,
+  }) => {
     await test.step("Select breadcrumb", async () => {
       await loginPage.selectPracticesBreadcrumb();
     });
