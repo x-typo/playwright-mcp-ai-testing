@@ -79,4 +79,18 @@ test.describe("Notes Register Page", () => {
       });
     }
   );
+
+  test(
+    "Navigate to Practice Page via Breadcrumb",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesRegisterPage, practicesPage }) => {
+      await test.step("Select practice page breadcrumb", async () => {
+        await notesRegisterPage.selectPracticeBreadcrumb();
+      });
+
+      await test.step("Verify practice page elements", async () => {
+        await expect(practicesPage.pageHeading).toBeVisible();
+      });
+    }
+  );
 });

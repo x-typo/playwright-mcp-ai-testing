@@ -16,6 +16,7 @@ export class NotesRegisterPage extends BasePage {
     loginLink: "Log in here!",
     emailInstruction:
       "Using a valid email address is highly recommended. This will enable you to reset your password if you forget it.",
+    practicesBreadcrumb: "Practice",
   } as const;
 
   constructor(page: Page, isMobile: boolean | undefined) {
@@ -71,6 +72,10 @@ export class NotesRegisterPage extends BasePage {
     return this.text(this.selectors.emailInstruction);
   }
 
+  get practiceBreadcrumb(): Locator {
+    return this.link(this.selectors.practicesBreadcrumb);
+  }
+
   // ===== NAVIGATION =====
   async navigateNotesRegisterPage(): Promise<void> {
     await this.navigatePage("/notes/app/register");
@@ -83,5 +88,9 @@ export class NotesRegisterPage extends BasePage {
 
   async selectLoginLink(): Promise<void> {
     await this.selectLink(this.selectors.loginLink);
+  }
+
+  async selectPracticeBreadcrumb(): Promise<void> {
+    await this.selectLink(this.selectors.practicesBreadcrumb);
   }
 }
