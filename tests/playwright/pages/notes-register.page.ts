@@ -14,6 +14,8 @@ export class NotesRegisterPage extends BasePage {
     passwordRequiredError: "Password is required",
     confirmPasswordRequiredError: "Confirm Password is required",
     loginLink: "Log in here!",
+    emailInstruction:
+      "Using a valid email address is highly recommended. This will enable you to reset your password if you forget it.",
   } as const;
 
   constructor(page: Page, isMobile: boolean | undefined) {
@@ -63,6 +65,10 @@ export class NotesRegisterPage extends BasePage {
 
   get loginLink(): Locator {
     return this.link(this.selectors.loginLink);
+  }
+
+  get emailInstruction(): Locator {
+    return this.text(this.selectors.emailInstruction);
   }
 
   // ===== NAVIGATION =====
