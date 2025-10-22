@@ -1,7 +1,7 @@
 import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
 
-export class ProfileSettingsPage extends BasePage {
+export class NotesProfileSettingsPage extends BasePage {
   private readonly selectors = {
     pageHeading: "Profile settings",
     accountDetailsTab: "account-details",

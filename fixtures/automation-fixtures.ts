@@ -13,7 +13,7 @@ import { BasePage } from "../tests/playwright/pages/base.page";
 import { LoginPage } from "../tests/playwright/pages/login.page";
 import { NotesDashboardPage } from "../tests/playwright/pages/notes-dashboard.page";
 import { ModalsPage } from "../tests/playwright/pages/modals.page";
-import { ProfileSettingsPage } from "../tests/playwright/pages/profile-settings.page";
+import { NotesProfileSettingsPage } from "../tests/playwright/pages/notes-profile-settings.page";
 import { ForgotPasswordPage } from "../tests/playwright/pages/forgot-password.page";
 import { NotesRegisterPage } from "../tests/playwright/pages/notes-register.page";
 import { PracticesPage } from "../tests/playwright/pages/practices.page";
@@ -64,7 +64,7 @@ type AutomationFixtures = {
   loginPage: LoginPage;
   notesDashboardPage: NotesDashboardPage;
   modalsPage: ModalsPage;
-  profileSettingsPage: ProfileSettingsPage;
+  profileSettingsPage: NotesProfileSettingsPage;
   forgotPasswordPage: ForgotPasswordPage;
   notesRegisterPage: NotesRegisterPage;
   practicesPage: PracticesPage;

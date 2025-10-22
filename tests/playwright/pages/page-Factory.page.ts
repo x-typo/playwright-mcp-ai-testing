@@ -2,7 +2,7 @@ import { Page } from "@playwright/test";
 import { LoginPage } from "./login.page";
 import { ModalsPage } from "./modals.page";
 import { NotesDashboardPage } from "./notes-dashboard.page";
-import { ProfileSettingsPage } from "./profile-settings.page";
+import { NotesProfileSettingsPage } from "./notes-profile-settings.page";
 import { ForgotPasswordPage } from "./forgot-password.page";
 import { NotesRegisterPage } from "./notes-register.page";
 import { PracticesPage } from "./practices.page";
@@ -25,8 +25,8 @@ export class PageFactory {
     return new ModalsPage(this.page, this.isMobile);
   }
 
-  getProfileSettingsPage(): ProfileSettingsPage {
-    return new ProfileSettingsPage(this.page, this.isMobile);
+  getProfileSettingsPage(): NotesProfileSettingsPage {
+    return new NotesProfileSettingsPage(this.page, this.isMobile);
   }
 
   getForgotPasswordPage(): ForgotPasswordPage {
