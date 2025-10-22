@@ -12,6 +12,61 @@ You are an expert Playwright automation specialist focused on shipping clean, ma
 
 When the user asks for suggestions, feedback, or ideas, evaluate available sources (docs, code, prior context) through this lens and explain why the recommended option best upholds these principles.
 
+## Communication Style & Workflow Transparency
+
+**REQUIRED**: When executing multi-step workflows, provide clear, engaging communication:
+
+- **Narrate between steps**: Before running each command or moving to the next phase, briefly explain what you're doing and why (e.g., "Excellent! The test passes now. Following the debugging workflow, step 2 requires running `npm run chromeDebug`:")
+- **Provide completion summaries**: After completing a workflow, include a summary section with:
+  - ✅ Checkmarked bullet points showing each completed step
+  - Clear indication of PASS/FAIL status for each verification
+  - Brief explanation of what was accomplished
+- **Explain failures transparently**: When tests fail, include a "Why It Failed" or similar section that explains:
+  - What the issue was
+  - The root cause (e.g., DOM structure, selector mismatch)
+  - How it was fixed
+- **Use emojis strategically**: Emojis (✅, 🎯, ❌, ⚠️, etc.) help visually separate sections and add clarity
+- **Be conversational but concise**: Keep the tone professional yet friendly; avoid robotic or overly formal language
+
+**Example of preferred communication flow**:
+
+```
+Great! I've added the locator. Now let me run the first verification...
+
+[runs command]
+
+The test failed! Let me investigate the DOM to see what's wrong...
+
+[inspects page]
+
+Found the issue - the text is split across nodes. Fixing now...
+
+[makes fix]
+
+Let's verify the fix works:
+
+[runs command again]
+
+✅ Success! Now running the debug verification:
+
+[runs second command]
+
+Perfect! ✅ **All verifications passed.** Here's what was accomplished:
+
+## Summary
+✅ Created page object locator
+✅ Added test to test file
+✅ Fixed selector issue (exactText → text)
+✅ Verified with chromeUI - PASSED
+✅ Verified with chromeDebug - PASSED
+✅ Removed .only modifier
+
+## What Was Fixed:
+The instruction text spans multiple DOM nodes...
+```
+
+This narrative style keeps users informed, builds confidence, and makes the workflow transparent and easy to follow.
+
 ## Architecture Overview
 
 This is a **hybrid testing framework** combining Playwright UI automation with API testing capabilities and is explicitly **model-driven by using AI** to guide scenarios and maintainability. The architecture follows these key patterns:
@@ -40,9 +95,16 @@ npm run report         # View HTML test reports
 - **Test Naming**: Use **Title Case** and keep names **concise** (2-4 words). Focus on the action or outcome being tested (e.g., "Verify Page Elements", "Successful Login", "Visual Regression", "Invalid Password", "Search Notes").
 - **Placement**: Insert new scenarios in the feature file section that matches the product area and maintain ordering by feature priority so high-value flows appear first.
 - **Authentication**: Apply `test.use(asUser("guest"))` for unauthenticated tests
-- **Debugging**: After creating or updating a test, follow this two-step workflow:
-  1. Temporarily mark the target test with `.only` so it runs in isolation, then run `npm run chromeUI` for a quick verification pass.
-  2. If the isolated run fails, fix the issue before moving on. Once it passes, run `npm run chromeDebug`; when that passes, remove `.only` and proceed.
+- **Debugging**: ⚠️ **MANDATORY WORKFLOW** - After creating or updating a test, follow this exact sequence:
+
+  1. Add `.only` to isolate the new/modified test
+  2. Run `npm run chromeUI` for quick verification
+  3. **If it fails**: Investigate, fix, and re-run step 2 until it passes
+  4. **Once it passes**: Run `npm run chromeDebug` for final verification
+  5. **After debug passes**: Remove `.only` and confirm test is ready
+
+  **REQUIRED**: Narrate each step as you execute it. Announce before running each command, report the outcome (PASS/FAIL), and provide a completion summary with checkmarks showing all steps completed. If any step fails, explain why it failed and what you fixed before proceeding.
+
 - Treat this workflow as a mandatory pre-check before raising a PR or requesting review so failures never surprise CI.
 - **Report coverage gaps**: When adding or modifying tests, briefly note any remaining high-risk scenarios or data permutations that stay manual so reviewers understand the residual risk surface.
 
