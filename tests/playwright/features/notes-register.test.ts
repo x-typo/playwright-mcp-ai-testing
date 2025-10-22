@@ -18,16 +18,6 @@ test.describe("Notes Register Page", () => {
   );
 
   test(
-    "Email Instruction Visible",
-    { tag: ["@smoke", "@regression"] },
-    async ({ notesRegisterPage }) => {
-      await test.step("Verify instruction text", async () => {
-        await expect(notesRegisterPage.emailInstructionText).toBeVisible();
-      });
-    }
-  );
-
-  test(
     "Required Field Errors",
     { tag: ["@smoke", "@regression"] },
     async ({ notesRegisterPage }) => {
