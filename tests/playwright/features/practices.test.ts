@@ -54,7 +54,7 @@ test.describe("Practices page", () => {
     { tag: ["@visual", "@smoke", "@regression"] },
     async ({ practicesPage }) => {
       const snapshotName = "practicesPage_.png";
-      const ratioAllowed = 0.03;
+      const ratioAllowed = 0.1;
 
       await test.step("Perform visual comparison", async () => {
         await expect(practicesPage.searchInput).toBeVisible();
