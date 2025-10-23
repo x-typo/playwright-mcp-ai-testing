@@ -25,6 +25,13 @@ export class PracticesPage extends BasePage {
     return this.link(title);
   }
 
+  practiceCardTryItOutButton(practiceTitle: string): Locator {
+    return this.page
+      .locator(".card")
+      .filter({ hasText: practiceTitle })
+      .getByRole("link", { name: "Try it out" });
+  }
+
   // ===== NAVIGATIONS =====
   async navigatePracticesPage(): Promise<void> {
     await this.navigatePage("");
@@ -33,5 +40,13 @@ export class PracticesPage extends BasePage {
   // ===== INTERACTIONS =====
   async searchPractice(term: string): Promise<void> {
     await this.searchInput.fill(term);
+  }
+
+  async selectPracticeCardLink(title: string): Promise<void> {
+    await this.practiceCardLink(title).click();
+  }
+
+  async selectPracticeCardTryItOutButton(practiceTitle: string): Promise<void> {
+    await this.practiceCardTryItOutButton(practiceTitle).click();
   }
 }

@@ -16,7 +16,7 @@ test.describe("Practices page", () => {
     }
   );
 
-  test("Navigate to Notes App via link in card", async ({
+  test("Navigate to page via link in card", async ({
     practicesPage,
     notesDashboardPage,
   }) => {
@@ -25,7 +25,25 @@ test.describe("Practices page", () => {
     });
 
     await test.step("Select link on practice card", async () => {
-      await practicesPage.practiceCardLink("Notes App | React").click();
+      await practicesPage.selectPracticeCardLink("Notes App | React");
+    });
+
+    await test.step("Verify", async () => {
+      await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
+      await expect(notesDashboardPage.addNoteButton).toBeVisible();
+    });
+  });
+
+  test("Navigate to page via 'Try It Out' button in card", async ({
+    practicesPage,
+    notesDashboardPage,
+  }) => {
+    await test.step("Search for practice", async () => {
+      await practicesPage.searchPractice("Notes App | React");
+    });
+
+    await test.step("Click Try it out button", async () => {
+      await practicesPage.selectPracticeCardTryItOutButton("Notes App | React");
     });
 
     await test.step("Verify", async () => {
