@@ -1,7 +1,7 @@
 <div align="center" style="display:flex; align-items:center; justify-content:center;">
-   <img width="100" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright" style="margin-right:30px;"/>
+   <img width="100" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright" style="margin-right:50px;"/>
    <img width="48" src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/plus.svg" alt="Plus" style="margin:0 12px; align-self:center;"/>
-   <img width="130" src="https://i.imgur.com/QZKvZAW.png" alt="AI-powered" style="margin-left:30px;"/>
+   <img width="130" src="https://i.imgur.com/QZKvZAW.png" alt="AI-powered" style="margin-left:50px;"/>
 </div>
 
 # AI-Powered Playwright Hybrid E2E Framework
