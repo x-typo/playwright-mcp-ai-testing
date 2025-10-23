@@ -1,7 +1,11 @@
 <div align="center">
-  <img width="100" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright"/>
-  <img width="48" src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/plus.svg" alt="Plus"/>
-  <img width="130" src="https://i.imgur.com/QZKvZAW.png" alt="AI-powered"/>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img width="100" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright"/></td>
+<td><img width="48" src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/plus.svg" alt="Plus"/></td>
+<td><img width="130" src="https://i.imgur.com/QZKvZAW.png" alt="AI-powered"/></td>
+</tr>
+</table>
 </div>
 
 # AI-Powered Playwright Hybrid E2E Framework
