@@ -42,7 +42,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright accessibility tests
-        run: npm run chromeAccess
+        run: npm run chrome-access-wip
         continue-on-error: true
 
       - name: Install junit-viewer

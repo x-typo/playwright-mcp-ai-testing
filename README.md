@@ -89,21 +89,21 @@ The npm scripts rely on `cross-env` to load these variables (see `package.json`)
    ```
 3. **Verify credentials** by running a quick smoke test:
    ```powershell
-   npm run chromeDebug -- --grep "@smoke"
+   npm run chrome-debug -- --grep "@smoke"
    ```
    The debug UI opens Playwright's runner so you can watch the flow and capture traces if needed.
 
 ## Running Tests
 
-| Scenario                                    | Command                                            |
-| ------------------------------------------- | -------------------------------------------------- |
-| Interactive desktop debugging (recommended) | `npm run chromeDebug -- --grep "Scenario Name"`    |
-| Interactive iOS emulation                   | `npm run iosDebug -- --grep "Scenario Name"`       |
-| Headless desktop smoke/regression           | `npm run chromeUI -- --grep "@smoke"`              |
-| Visual regression (desktop / iOS)           | `npm run chromeVisual` / `npm run iosVisual`       |
-| Playwright Test UI mode                     | `npm run uiMode`                                   |
-| Show latest HTML report                     | `npm run report`                                   |
-| Generate selectors with codegen             | `npm run codeGenDesktop` / `npm run codeGenMobile` |
+| Scenario                                    | Command                                              |
+| ------------------------------------------- | ---------------------------------------------------- |
+| Interactive desktop debugging (recommended) | `npm run chrome-debug -- --grep "Scenario Name"`     |
+| Interactive iOS emulation                   | `npm run ios-debug -- --grep "Scenario Name"`        |
+| Headless desktop smoke/regression           | `npm run chrome-ui -- --grep "@smoke"`               |
+| Visual regression (desktop / iOS)           | `npm run chrome-visual` / `npm run ios-visual`       |
+| Playwright Test UI mode                     | `npm run ui-mode`                                    |
+| Show latest HTML report                     | `npm run report`                                     |
+| Generate selectors with codegen             | `npm run codegen-desktop` / `npm run codegen-mobile` |
 
 > **Tip:** When authoring or fixing selectors, launch the pre-authenticated browser by requesting "open chrome" from the AI agent. It navigates to the login page and signs in automatically using the configured credentials.
 
@@ -139,7 +139,7 @@ The npm scripts rely on `cross-env` to load these variables (see `package.json`)
 
 ## Troubleshooting
 
-- **Auth failures**: Re-run `npm run chromeDebug` to confirm the storage state is valid; check `auth/authSetups/global-setup.ts` logs.
+- **Auth failures**: Re-run `npm run chrome-debug` to confirm the storage state is valid; check `auth/authSetups/global-setup.ts` logs.
 - **Flaky selectors**: Inspect the live DOM using the "open chrome" workflow, then update the relevant page object.
 - **Visual drift**: Mask dynamic regions in the page object before capturing new snapshots; use the `maxDiffPixelRatio` of `0.03` as a guardrail.
 - **Mobile issues**: Validate WDIO configs under `configs/` and ensure the LambdaTest credentials (if used) are exported.

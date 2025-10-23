@@ -16,7 +16,7 @@ When the user asks for suggestions, feedback, or ideas, evaluate available sourc
 
 **REQUIRED**: When executing multi-step workflows, provide clear, engaging communication:
 
-- **Narrate between steps**: Before running each command or moving to the next phase, briefly explain what you're doing and why (e.g., "Excellent! The test passes now. Following the debugging workflow, step 2 requires running `npm run chromeDebug`:")
+- **Narrate between steps**: Before running each command or moving to the next phase, briefly explain what you're doing and why (e.g., "Excellent! The test passes now. Following the debugging workflow, step 2 requires running `npm run chrome-debug`:")
 - **Provide completion summaries**: After completing a workflow, include a summary section with:
   - ✅ Checkmarked bullet points showing each completed step
   - Clear indication of PASS/FAIL status for each verification
@@ -57,8 +57,8 @@ Perfect! ✅ **All verifications passed.** Here's what was accomplished:
 ✅ Created page object locator
 ✅ Added test to test file
 ✅ Fixed selector issue (exactText → text)
-✅ Verified with chromeUI - PASSED
-✅ Verified with chromeDebug - PASSED
+✅ Verified with chrome-ui - PASSED
+✅ Verified with chrome-debug - PASSED
 ✅ Removed .only modifier
 
 ## What Was Fixed:
@@ -80,9 +80,9 @@ This is a **hybrid testing framework** combining Playwright UI automation with A
 
 ```bash
 # Debug tests (most common during development)
-npm run chromeDebug    # Desktop Chrome with debugger
-npm run iosDebug       # Mobile iOS simulation with debugger
-npm run report         # View HTML test reports
+npm run chrome-debug    # Desktop Chrome with debugger
+npm run ios-debug       # Mobile iOS simulation with debugger
+npm run report          # View HTML test reports
 ```
 
 ## Test Structure & Conventions
@@ -98,9 +98,9 @@ npm run report         # View HTML test reports
 - **Debugging**: ⚠️ **MANDATORY WORKFLOW** - After creating or updating a test, follow this exact sequence:
 
   1. Add `.only` to isolate the new/modified test
-  2. Run `npm run chromeUI` for quick verification
+  2. Run `npm run chrome-ui` for quick verification
   3. **If it fails**: Investigate, fix, and re-run step 2 until it passes
-  4. **Once it passes**: Run `npm run chromeDebug` for final verification
+  4. **Once it passes**: Run `npm run chrome-debug` for final verification
   5. **After debug passes**: Remove `.only` and confirm test is ready
 
   **REQUIRED**: Narrate each step as you execute it. Announce before running each command, report the outcome (PASS/FAIL), and provide a completion summary with checkmarks showing all steps completed. If any step fails, explain why it failed and what you fixed before proceeding.
@@ -171,7 +171,7 @@ get loginButton() { return this.button("Login"); }
 
 - When a task requires inspecting the DOM or validating a selector, issue the **"open chrome"** instruction. The agent will launch the authenticated Chrome session and land on `https://practice.expandtesting.com/notes/app/login` automatically.
 - From that session, navigate through the UI (or reuse stored credentials) to reach the relevant screen before inspecting elements. Use Chrome DevTools or inline locator evaluations to capture the exact attributes you need.
-- Prefer live browser sessions for discovery over running `npm run chromeUI` for full suite validation; the latter are reserved for automated validation once selectors are finalized.
+- Prefer live browser sessions for discovery over running `npm run chrome-ui` for full suite validation; the latter are reserved for automated validation once selectors are finalized.
 - Once you've gathered the required selectors or DOM details, close the browser session to free resources before continuing with code changes or test runs.
 
 ### Test Data Management
@@ -198,7 +198,7 @@ get loginButton() { return this.button("Login"); }
 
 ## Debugging Tips
 
-- **Use `npm run chromeDebug`** - most effective for step-by-step debugging
+- **Use `npm run chrome-debug`** - most effective for step-by-step debugging
 - **Check storage states** - authentication issues often stem from expired tokens
 - **Review global-setup logs** - authentication setup happens before all tests
 - **Visual test failures** - check masked elements and pixel ratio thresholds
