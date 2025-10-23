@@ -1,6 +1,8 @@
 <p align="center">
   <img width="100" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright" align="middle"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <img width="48" src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/plus.svg" alt="Plus" align="middle"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <img width="130" src="https://i.imgur.com/QZKvZAW.png" alt="AI-powered" align="middle"/>
 </p>
 
