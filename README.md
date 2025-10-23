@@ -1,5 +1,5 @@
 <div align="center" style="display:flex; align-items:center; justify-content:center; gap:16px;">
-   <img width="200" src="https://applitools.com/wp-content/uploads/2022/08/Playwright_logo_long.png" alt="Playwright"/>
+   <img width="200" src="https://www.pngaaa.com/detail/5809084" alt="Playwright"/>
    <span style="font-size: 2rem; font-weight: bold; line-height:1;">+</span>
    <img width="200" src="https://i.imgur.com/AxSfhSY.png" alt="AI-powered"/>
 </div>
