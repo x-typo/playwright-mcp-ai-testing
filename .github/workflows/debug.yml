@@ -39,7 +39,7 @@ jobs:
           MAIN_PASSWORD: ${{ secrets.MAIN_PASSWORD }}
           UI_BASE_URL: ${{ secrets.UI_BASE_URL }}
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
-        run: npx playwright test --config=./configs/playwright.config.ts --project=chromeUI "tests/playwright/features/notes-dashboard.test.ts"
+        run: npx playwright test --config=./configs/playwright.config.ts --project=chromeUI "tests/playwright/features/practices.test.ts" --grep "Visual Test"
         continue-on-error: true
 
       - name: Install junit-viewer
