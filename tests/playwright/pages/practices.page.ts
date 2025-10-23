@@ -21,14 +21,14 @@ export class PracticesPage extends BasePage {
   }
 
   // ===== LOCATOR METHODS =====
-  practiceCardLink(title: string): Locator {
+  cardLink(title: string): Locator {
     return this.link(title);
   }
 
-  practiceCardTryItOutButton(practiceTitle: string): Locator {
+  cardTryItOutButton(cardTitle: string): Locator {
     return this.page
       .locator(".card")
-      .filter({ hasText: practiceTitle })
+      .filter({ hasText: cardTitle })
       .getByRole("link", { name: "Try it out" });
   }
 
@@ -42,11 +42,11 @@ export class PracticesPage extends BasePage {
     await this.searchInput.fill(term);
   }
 
-  async selectPracticeCardLink(title: string): Promise<void> {
-    await this.practiceCardLink(title).click();
+  async selectCardLink(title: string): Promise<void> {
+    await this.cardLink(title).click();
   }
 
-  async selectPracticeCardTryItOutButton(practiceTitle: string): Promise<void> {
-    await this.practiceCardTryItOutButton(practiceTitle).click();
+  async selectCardTryItOutButton(cardTitle: string): Promise<void> {
+    await this.cardTryItOutButton(cardTitle).click();
   }
 }

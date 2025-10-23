@@ -25,7 +25,7 @@ test.describe("Practices page", () => {
     });
 
     await test.step("Select link on practice card", async () => {
-      await practicesPage.selectPracticeCardLink("Notes App | React");
+      await practicesPage.selectCardLink("Notes App | React");
     });
 
     await test.step("Verify", async () => {
@@ -43,7 +43,7 @@ test.describe("Practices page", () => {
     });
 
     await test.step("Click Try it out button", async () => {
-      await practicesPage.selectPracticeCardTryItOutButton("Notes App | React");
+      await practicesPage.selectCardTryItOutButton("Notes App | React");
     });
 
     await test.step("Verify", async () => {
@@ -58,12 +58,8 @@ test.describe("Practices page", () => {
     });
 
     await test.step("Verify", async () => {
-      await expect(
-        practicesPage.practiceCardLink("Drag and Drop")
-      ).toBeVisible();
-      await expect(
-        practicesPage.practiceCardLink("Test Login Page")
-      ).toBeHidden();
+      await expect(practicesPage.cardLink("Drag and Drop")).toBeVisible();
+      await expect(practicesPage.cardLink("Test Login Page")).toBeHidden();
     });
   });
 
