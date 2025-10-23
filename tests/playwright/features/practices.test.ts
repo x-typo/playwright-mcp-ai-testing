@@ -16,21 +16,6 @@ test.describe("Practices page", () => {
     }
   );
 
-  test("Search filters practice cards", async ({ practicesPage }) => {
-    await test.step("Search for practice", async () => {
-      await practicesPage.searchPractice("Drag and Drop");
-    });
-
-    await test.step("Verify", async () => {
-      await expect(
-        practicesPage.practiceCardLink("Drag and Drop")
-      ).toBeVisible();
-      await expect(
-        practicesPage.practiceCardLink("Test Login Page")
-      ).toBeHidden();
-    });
-  });
-
   test("Navigate to Notes App via practice card", async ({
     practicesPage,
     notesDashboardPage,
@@ -46,6 +31,21 @@ test.describe("Practices page", () => {
     await test.step("Verify", async () => {
       await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
       await expect(notesDashboardPage.addNoteButton).toBeVisible();
+    });
+  });
+
+  test("Search filters practice cards", async ({ practicesPage }) => {
+    await test.step("Search for practice", async () => {
+      await practicesPage.searchPractice("Drag and Drop");
+    });
+
+    await test.step("Verify", async () => {
+      await expect(
+        practicesPage.practiceCardLink("Drag and Drop")
+      ).toBeVisible();
+      await expect(
+        practicesPage.practiceCardLink("Test Login Page")
+      ).toBeHidden();
     });
   });
 
