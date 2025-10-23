@@ -1,5 +1,5 @@
 <div align="center" style="display:flex; align-items:center; justify-content:center; gap:16px;">
-   <img width="150" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright"/>
+   <img width="100" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright"/>
    <span style="font-size: 2rem; font-weight: bold; line-height:1;">+</span>
    <img width="200" src="https://i.imgur.com/AxSfhSY.png" alt="AI-powered"/>
 </div>
