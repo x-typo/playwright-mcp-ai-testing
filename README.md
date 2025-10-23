@@ -4,7 +4,7 @@
    <span style="font-size: 2rem; font-weight: bold; line-height:1;">+</span>
    <img src="https://via.placeholder.com/1x30/ffffff/ffffff" width="1" height="35" style="display:block;" alt="" />
     <div style="text-align:center;">
-   <img width="200" src="TBD" alt="AI-powered"/>
+   <img width="200" src="https://imgur.com/AxSfhSY" alt="AI-powered"/>
     </div>
 </div>
 
