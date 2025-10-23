@@ -19,43 +19,6 @@ test.describe("Notes Dashboard Page", () => {
   );
 
   test(
-    "Verify MyNotes navigation bar",
-    { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage }) => {
-      await test.step("Verify navigation items", async () => {
-        if (notesDashboardPage.isMobile) {
-          await notesDashboardPage.selectNavigationMenuOnMobile();
-        }
-
-        await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
-        await expect(
-          notesDashboardPage.profileSettingsLinkButton
-        ).toBeVisible();
-        await expect(notesDashboardPage.logoutButton).toBeVisible();
-      });
-    }
-  );
-
-  test(
-    "Search Notes",
-    { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage }) => {
-      await test.step("Select tab", async () => {
-        await notesDashboardPage.selectWorkCategoryButton();
-      });
-
-      await test.step("Search for notes", async () => {
-        await notesDashboardPage.searchNotes("work1");
-      });
-
-      await test.step("Verify", async () => {
-        await expect(notesDashboardPage.noteCardTitle("work1")).toBeVisible();
-        await expect(notesDashboardPage.noteCardTitle("work2")).toBeHidden();
-      });
-    }
-  );
-
-  test(
     "Add New Note",
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage, modalsPage, notesClient }) => {
@@ -181,6 +144,55 @@ test.describe("Notes Dashboard Page", () => {
   );
 
   test(
+    "Search Notes",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage }) => {
+      await test.step("Select tab", async () => {
+        await notesDashboardPage.selectWorkCategoryButton();
+      });
+
+      await test.step("Search for notes", async () => {
+        await notesDashboardPage.searchNotes("work1");
+      });
+
+      await test.step("Verify", async () => {
+        await expect(notesDashboardPage.noteCardTitle("work1")).toBeVisible();
+        await expect(notesDashboardPage.noteCardTitle("work2")).toBeHidden();
+      });
+    }
+  );
+
+  test(
+    "Verify MyNotes navigation bar",
+    { tag: ["@smoke", "@regression"] },
+    async ({ notesDashboardPage }) => {
+      await test.step("Verify navigation items", async () => {
+        if (notesDashboardPage.isMobile) {
+          await notesDashboardPage.selectNavigationMenuOnMobile();
+        }
+
+        await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
+        await expect(
+          notesDashboardPage.profileSettingsLinkButton
+        ).toBeVisible();
+        await expect(notesDashboardPage.logoutButton).toBeVisible();
+      });
+    }
+  );
+
+  test("No Notes Displayed", async ({ notesDashboardPage }) => {
+    await test.step("Select tab", async () => {
+      await notesDashboardPage.selectPersonalCategoryButton();
+    });
+
+    await test.step("Verify", async () => {
+      await expect(
+        notesDashboardPage.text("You don't have any notes in")
+      ).toBeVisible();
+    });
+  });
+
+  test(
     "'Add New Note' Modal",
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage, modalsPage }) => {
@@ -243,18 +255,6 @@ test.describe("Notes Dashboard Page", () => {
       });
     }
   );
-
-  test("No Notes Displayed", async ({ notesDashboardPage }) => {
-    await test.step("Select tab", async () => {
-      await notesDashboardPage.selectPersonalCategoryButton();
-    });
-
-    await test.step("Verify", async () => {
-      await expect(
-        notesDashboardPage.text("You don't have any notes in")
-      ).toBeVisible();
-    });
-  });
 
   test(
     "Visual Test",
