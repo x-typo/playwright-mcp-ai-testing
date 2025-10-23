@@ -1,9 +1,9 @@
 <div align="center">
-<table>
-<tr>
-<td><img width="100" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright"/></td>
-<td><img width="48" src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/plus.svg" alt="Plus"/></td>
-<td><img width="130" src="https://i.imgur.com/QZKvZAW.png" alt="AI-powered"/></td>
+<table style="border-collapse: collapse; border: none;">
+<tr style="border: none;">
+<td style="border: none;"><img width="100" src="https://i.imgur.com/TgIgEjo.png" alt="Playwright"/></td>
+<td style="border: none;"><img width="48" src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/plus.svg" alt="Plus"/></td>
+<td style="border: none;"><img width="130" src="https://i.imgur.com/QZKvZAW.png" alt="AI-powered"/></td>
 </tr>
 </table>
 </div>
