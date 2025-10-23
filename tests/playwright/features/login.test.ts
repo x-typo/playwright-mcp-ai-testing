@@ -7,18 +7,6 @@ test.describe("Login Page", () => {
     await loginPage.navigateLoginPage();
   });
 
-  test(
-    "Page Validation",
-    { tag: ["@smoke", "@regression"] },
-    async ({ loginPage }) => {
-      await test.step("Verify", async () => {
-        await expect(loginPage.emailInputBox).toBeVisible();
-        await expect(loginPage.passwordInputBox).toBeVisible();
-        await expect(loginPage.loginButton).toBeVisible();
-      });
-    }
-  );
-
   test("Successful Login", async ({ loginPage, notesDashboardPage }) => {
     const validCreds = {
       emailAddress: process.env.MAIN_USERNAME!,
@@ -33,6 +21,18 @@ test.describe("Login Page", () => {
       await expect(notesDashboardPage.myNotesLinkButton).toBeVisible();
     });
   });
+
+  test(
+    "Page Validation",
+    { tag: ["@smoke", "@regression"] },
+    async ({ loginPage }) => {
+      await test.step("Verify", async () => {
+        await expect(loginPage.emailInputBox).toBeVisible();
+        await expect(loginPage.passwordInputBox).toBeVisible();
+        await expect(loginPage.loginButton).toBeVisible();
+      });
+    }
+  );
 
   test("Invalid Password", async ({ loginPage }) => {
     await test.step("Submit invalid password", async () => {
@@ -62,19 +62,6 @@ test.describe("Login Page", () => {
     });
   });
 
-  test("Forgot Password Page Navigation", async ({
-    loginPage,
-    forgotPasswordPage,
-  }) => {
-    await test.step("Select link", async () => {
-      await loginPage.selectForgotPasswordLink();
-    });
-
-    await test.step("Verify", async () => {
-      await expect(forgotPasswordPage.pageHeading).toBeVisible();
-    });
-  });
-
   test("Notes Register Page Navigation", async ({
     loginPage,
     notesRegisterPage,
@@ -85,6 +72,19 @@ test.describe("Login Page", () => {
 
     await test.step("Verify", async () => {
       await expect(notesRegisterPage.pageHeading).toBeVisible();
+    });
+  });
+
+  test("Forgot Password Page Navigation", async ({
+    loginPage,
+    forgotPasswordPage,
+  }) => {
+    await test.step("Select link", async () => {
+      await loginPage.selectForgotPasswordLink();
+    });
+
+    await test.step("Verify", async () => {
+      await expect(forgotPasswordPage.pageHeading).toBeVisible();
     });
   });
 
