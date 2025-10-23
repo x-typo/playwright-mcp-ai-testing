@@ -16,7 +16,7 @@ test.describe("Practices page", () => {
     }
   );
 
-  test("Navigate to Notes App via practice card", async ({
+  test("Navigate to Notes App via link in card", async ({
     practicesPage,
     notesDashboardPage,
   }) => {
