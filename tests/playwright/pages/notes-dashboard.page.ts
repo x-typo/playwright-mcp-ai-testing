@@ -98,21 +98,18 @@ export class NotesDashboardPage extends BasePage {
     await this.selectTestIdSelector(this.selectors.searchButton);
   }
 
-  async selectAllCategoryButton(): Promise<void> {
-    await this.selectButton(this.selectors.allCategory);
+  async selectCategoryButton(
+    category: "All" | "Work" | "Home" | "Personal"
+  ): Promise<void> {
+    const categoryMap = {
+      All: this.selectors.allCategory,
+      Work: this.selectors.workCategory,
+      Home: this.selectors.homeCategory,
+      Personal: this.selectors.personalCategory,
+    };
+    await this.selectButton(categoryMap[category]);
   }
 
-  async selectWorkCategoryButton(): Promise<void> {
-    await this.selectButton(this.selectors.workCategory);
-  }
-
-  async selectHomeCategoryButton(): Promise<void> {
-    await this.selectButton(this.selectors.homeCategory);
-  }
-
-  async selectPersonalCategoryButton(): Promise<void> {
-    await this.selectButton(this.selectors.personalCategory);
-  }
   async selectAddNoteButton(): Promise<void> {
     await this.selectTestIdSelector(this.selectors.addNoteButton);
   }
