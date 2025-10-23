@@ -1,11 +1,7 @@
-<div align="center">
+<div align="center" style="display:flex; align-items:center; justify-content:center; gap:16px;">
    <img width="200" src="https://applitools.com/wp-content/uploads/2022/08/Playwright_logo_long.png" alt="Playwright"/>
-   <br />
    <span style="font-size: 2rem; font-weight: bold; line-height:1;">+</span>
-   <img src="https://via.placeholder.com/1x30/ffffff/ffffff" width="1" height="35" style="display:block;" alt="" />
-    <div style="text-align:center;">
    <img width="200" src="https://i.imgur.com/AxSfhSY.png" alt="AI-powered"/>
-    </div>
 </div>
 
 # AI-Powered Playwright Hybrid E2E Framework
