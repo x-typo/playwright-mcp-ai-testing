@@ -8,11 +8,11 @@
 
 # AI-Powered Playwright Hybrid E2E Framework
 
-[![CI Status](https://img.shields.io/badge/CI-passing-brightgreen)]() [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)](https://www.typescriptlang.org/) [![Playwright](https://img.shields.io/badge/Playwright-1.51-45ba4b)](https://playwright.dev/) [![License](https://img.shields.io/badge/license-ISC-yellow)]()
+[![CI Status](https://img.shields.io/badge/CI-passing-brightgreen)]() [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)](https://www.typescriptlang.org/) [![Playwright](https://img.shields.io/badge/Playwright-1.51-45ba4b)](https://playwright.dev/) [![License](https://img.shields.io/badge/license-MIT-yellow)]()
 
 > A production-ready, AI-powered test automation framework that unifies UI and API testing with intelligent workflows.
 
-This repository hosts an AI-powered Playwright framework with MCP server integration that unifies UI and API testing while showcasing mobile coverage (via WebdriverIO/Appium). It is engineered for fast feedback, high reusability, and clean abstractions that scale with your product.
+Inside you'll find an MCP-integrated Playwright stack that blends UI and API automation with WebdriverIO/Appium mobile coverage—optimized for fast feedback, high reusability, and clean abstractions that scale with your product.
 
 ## 🎯 Why This Framework?
 
@@ -195,9 +195,9 @@ To leverage the AI assistant for DOM inspection or natural language automation f
 - [Framework Architecture Guide](./AGENTS.md) - Deep dive into design patterns and AI workflows
 - [Playwright Documentation](https://playwright.dev/) - Official Playwright docs
 - [WebdriverIO Documentation](https://webdriver.io/) - Mobile testing with Appium
-- [Playwright MCP Server](https://github.com/microsoft/playwright-mcp)
-- [Claude Code](https://docs.claude.com/en/home)
-- [OpenAI Codex](https://developers.openai.com/codex)
+- [Playwright MCP Server](https://github.com/microsoft/playwright-mcp) - Run the AI-enabled browser control service
+- [Claude Code](https://docs.claude.com/en/home) - Claude’s IDE with native MCP client support
+- [OpenAI Codex](https://developers.openai.com/codex) - Codex developer platform and MCP integrations
 
 ## 📝 License
 
