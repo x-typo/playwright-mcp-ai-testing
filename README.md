@@ -8,7 +8,19 @@
 
 # AI-Powered Playwright Hybrid E2E Framework
 
+[![CI Status](https://img.shields.io/badge/CI-passing-brightgreen)]() [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)](https://www.typescriptlang.org/) [![Playwright](https://img.shields.io/badge/Playwright-1.51-45ba4b)](https://playwright.dev/) [![License](https://img.shields.io/badge/license-ISC-yellow)]()
+
+> A production-ready, AI-powered test automation framework that unifies UI and API testing with intelligent workflows.
+
 This repository hosts an AI-powered Playwright framework with MCP server integration that unifies UI and API testing while showcasing mobile coverage (via WebdriverIO/Appium). It is engineered for fast feedback, high reusability, and clean abstractions that scale with your product.
+
+## 🎯 Why This Framework?
+
+- **🚀 Fast Onboarding** - Get productive in minutes with AI-assisted test authoring
+- **🔒 Reliable** - API-backed setup eliminates flaky tests and data dependencies
+- **♻️ Maintainable** - SOLID principles and Page Object Model keep code clean
+- **📊 Observable** - Built-in reporting, visual regression, and CI/CD integration
+- **🤖 AI-Native** - Natural language commands accelerate test creation and debugging
 
 ## Highlights
 
@@ -17,7 +29,7 @@ This repository hosts an AI-powered Playwright framework with MCP server integra
 - **API-backed setup & verification** enables reliable test data management and faster feedback loops.
 - **Cross-device coverage** for desktop Chrome, iOS emulation, and LambdaTest mobile runs.
 - **Visual regression support** with baseline snapshots per device.
-- **AI-assisted authoring** through the Playwright MCP server and `npm run aiChrome` workflow for natural language-driven automation.
+- **AI-assisted authoring** powered by the Playwright MCP server, enabling natural language-driven automation and live DOM scanning without additional npm scripts.
 
 ## Architecture at a Glance
 
@@ -76,6 +88,37 @@ Create a `.env` file in the project root (or export the variables in your shell)
 | `UI_BASE_URL`   | Base URL for UI navigation (default `https://practice.expandtesting.com/notes/app`) |
 
 The npm scripts rely on `cross-env` to load these variables (see `package.json`).
+
+## ⚡ Quick Start
+
+Get up and running in under 2 minutes, then pair it with the MCP-powered "open chrome" flow to lock selectors in minutes:
+
+```bash
+# 1. Clone and install
+git clone https://github.com/x-typo/playwright-mcp-ai-testing.git
+cd playwright-mcp-ai-testing
+npm install
+
+# 2. Install Playwright browsers (first-time only)
+npx playwright install
+
+# 3. Create .env file with your credentials
+# See "Environment Configuration" section below
+
+# 4. Run your first test
+npm run chrome-debug -- --grep "@smoke"
+```
+
+**✅ Success!** You should see the Playwright debugger open and tests running.
+
+## 🤖 AI Workflow Requirements
+
+To leverage the AI assistant for DOM inspection or natural language automation flows:
+
+- Install the [Playwright MCP server](https://github.com/microsoft/playwright-mcp) and follow the repo instructions to configure credentials and start the service.
+- Connect via an MCP-aware client—GitHub Copilot Chat (Command Palette → “GitHub Copilot: Manage MCP Servers”), Claude Code, Codex, or the MCP CLI (`npx @playwright/mcp@latest`)—so the agent can attach to the server.
+- Use the "open chrome" instruction with the AI agent to launch a pre-authenticated browser session; the MCP server handles DOM scanning directly.
+- Continue to rely on standard scripts such as `npm run chrome-debug` or `npm run chrome-ui` for verification runs.
 
 ## Getting Started
 
@@ -139,10 +182,32 @@ The npm scripts rely on `cross-env` to load these variables (see `package.json`)
 
 ## Troubleshooting
 
-- **Auth failures**: Re-run `npm run chrome-debug` to confirm the storage state is valid; check `auth/authSetups/global-setup.ts` logs.
-- **Flaky selectors**: Inspect the live DOM using the "open chrome" workflow, then update the relevant page object.
-- **Visual drift**: Mask dynamic regions in the page object before capturing new snapshots; use the `maxDiffPixelRatio` of `0.03` as a guardrail.
-- **Mobile issues**: Validate WDIO configs under `configs/` and ensure the LambdaTest credentials (if used) are exported.
+| Issue                  | Solution                                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 🔐 **Auth failures**   | Re-run `npm run chrome-debug` to confirm storage state is valid; check `auth/authSetups/global-setup.ts` logs |
+| 🎯 **Flaky selectors** | Use "open chrome" workflow to inspect live DOM, then update the page object                                   |
+| 👁️ **Visual drift**    | Mask dynamic regions before capturing snapshots; use `maxDiffPixelRatio: 0.03` as guardrail                   |
+| 📱 **Mobile issues**   | Validate WDIO configs under `configs/`; ensure LambdaTest credentials are exported                            |
+| 🐛 **Test failures**   | Check trace files in `test-results/` or run with `--debug` flag for step-by-step execution                    |
+
+## 📚 Additional Resources
+
+- [Framework Architecture Guide](./AGENTS.md) - Deep dive into design patterns and AI workflows
+- [Playwright Documentation](https://playwright.dev/) - Official Playwright docs
+- [WebdriverIO Documentation](https://webdriver.io/) - Mobile testing with Appium
+- [Playwright MCP Server](https://github.com/microsoft/playwright-mcp)
+- [Claude Code](https://docs.claude.com/en/home)
+- [OpenAI Codex](https://developers.openai.com/codex)
+
+## 📝 License
+
+MIT License - see [LICENSE](./LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Playwright](https://playwright.dev/) by Microsoft
+- AI integration powered by Model Context Protocol (MCP)
+- Test app provided by [ExpandTesting](https://practice.expandtesting.com/)
 
 ---
 
