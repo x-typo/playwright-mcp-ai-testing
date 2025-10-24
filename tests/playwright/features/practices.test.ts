@@ -11,7 +11,7 @@ test.describe("Practices page", () => {
     async ({ practicesPage }) => {
       await test.step("Verify", async () => {
         await expect(practicesPage.pageHeading).toBeVisible();
-        await expect(practicesPage.searchInput).toBeVisible();
+        await expect(practicesPage.searchInputBox).toBeVisible();
       });
     }
   );
@@ -71,7 +71,7 @@ test.describe("Practices page", () => {
       const ratioAllowed = 0.1;
 
       await test.step("Perform visual comparison", async () => {
-        await expect(practicesPage.searchInput).toBeVisible();
+        await expect(practicesPage.searchInputBox).toBeVisible();
         expect(
           await practicesPage.page.screenshot({
             animations: "disabled",

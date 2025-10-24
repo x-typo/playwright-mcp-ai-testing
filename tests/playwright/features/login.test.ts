@@ -98,7 +98,7 @@ test.describe("Login Page", () => {
 
     await test.step("Verify", async () => {
       await expect(practicesPage.pageHeading).toBeVisible();
-      await expect(practicesPage.searchInput).toBeVisible();
+      await expect(practicesPage.searchInputBox).toBeVisible();
     });
   });
 
@@ -121,12 +121,12 @@ test.describe("Login Page", () => {
     }
   );
 
-  // test.skip(
+  // test(
   //   "Accessibility Test",
-  //   { tag: "@accessibility" },
+  //   { tag: ["@accessibility", "@regression"] },
   //   async ({ loginPage, performAccessibilityScan }) => {
   //     await test.step("Run accessibility scan", async () => {
-  //       await expect(loginPage.inputBox("Email")).toBeVisible();
+  //       await expect(loginPage.emailInputBox).toBeVisible();
   //       const results = await performAccessibilityScan();
   //       await expect.soft(results).toEqual(0);
   //     });

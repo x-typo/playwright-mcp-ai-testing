@@ -21,12 +21,12 @@ test.describe("Profile Settings Page", () => {
     async ({ profileSettingsPage }) => {
       await test.step("Account details tab shows user info", async () => {
         await profileSettingsPage.openAccountDetailsTab();
-        await expect(profileSettingsPage.userIdInput).toBeVisible();
+        await expect(profileSettingsPage.userIdInputBox).toBeVisible();
       });
 
       await test.step("Change password tab shows password fields", async () => {
         await profileSettingsPage.openChangePasswordTab();
-        await expect(profileSettingsPage.currentPasswordInput).toBeVisible();
+        await expect(profileSettingsPage.currentPasswordInputBox).toBeVisible();
       });
     }
   );
