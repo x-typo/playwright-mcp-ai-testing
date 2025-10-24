@@ -76,7 +76,7 @@ export class NotesRegisterPage extends BasePage {
     return this.link(this.selectors.practicesBreadcrumb);
   }
 
-  // ===== NAVIGATION =====
+  // ===== NAVIGATIONS =====
   async navigateNotesRegisterPage(): Promise<void> {
     await this.navigatePage("/notes/app/register");
   }

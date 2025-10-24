@@ -16,11 +16,11 @@ export class ModalsPage extends BasePage {
 
   // ===== LOCATOR GETTERS =====
 
-  get addNewNoteTitleInput(): Locator {
+  get addNoteTitleInputBox(): Locator {
     return this.testIdSelector(this.selectors.addNoteTitleInput);
   }
 
-  get addNewNoteDescriptionInput(): Locator {
+  get addNoteDescriptionInputBox(): Locator {
     return this.testIdSelector(this.selectors.addNoteDescriptionInput);
   }
 
@@ -48,8 +48,8 @@ export class ModalsPage extends BasePage {
     title: string,
     description: string
   ): Promise<void> {
-    await this.addNewNoteTitleInput.fill(title);
-    await this.addNewNoteDescriptionInput.fill(description);
+    await this.addNoteTitleInputBox.fill(title);
+    await this.addNoteDescriptionInputBox.fill(description);
     await this.selectSubmitButton();
   }
 

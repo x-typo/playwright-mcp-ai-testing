@@ -15,8 +15,12 @@ export class ForgotPasswordPage extends BasePage {
     return this.heading(this.selectors.pageHeading);
   }
 
+  // ===== LOCATOR METHODS =====
+
   // ===== NAVIGATIONS =====
   async navigateForgotPasswordPage(): Promise<void> {
     await this.navigatePage("/notes/app/forgot-password");
   }
+
+  // ===== INTERACTIONS =====
 }

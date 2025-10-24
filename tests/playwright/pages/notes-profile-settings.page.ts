@@ -14,7 +14,7 @@ export class NotesProfileSettingsPage extends BasePage {
     super(page, isMobile);
   }
 
-  // ===== LOCATOR GETTERS=====
+  // ===== LOCATOR GETTERS =====
   get pageHeading(): Locator {
     return this.heading(this.selectors.pageHeading);
   }
@@ -24,10 +24,10 @@ export class NotesProfileSettingsPage extends BasePage {
   get changePasswordTab(): Locator {
     return this.testIdSelector(this.selectors.changePasswordTab);
   }
-  get userIdInput(): Locator {
+  get userIdInputBox(): Locator {
     return this.testIdSelector(this.selectors.userIdInput);
   }
-  get currentPasswordInput(): Locator {
+  get currentPasswordInputBox(): Locator {
     return this.testIdSelector(this.selectors.currentPasswordInput);
   }
   // ===== LOCATOR METHODS =====

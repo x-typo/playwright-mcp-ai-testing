@@ -16,7 +16,7 @@ export class PracticesPage extends BasePage {
     return this.heading(this.selectors.pageHeading);
   }
 
-  get searchInput(): Locator {
+  get searchInputBox(): Locator {
     return this.inputBox(this.selectors.searchInput);
   }
 
@@ -39,7 +39,7 @@ export class PracticesPage extends BasePage {
 
   // ===== INTERACTIONS =====
   async searchPractice(term: string): Promise<void> {
-    await this.searchInput.fill(term);
+    await this.searchInputBox.fill(term);
   }
 
   async selectCardLink(title: string): Promise<void> {
