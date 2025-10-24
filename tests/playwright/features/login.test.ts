@@ -121,15 +121,19 @@ test.describe("Login Page", () => {
     }
   );
 
-  // test(
-  //   "Accessibility Test",
-  //   { tag: ["@accessibility", "@regression"] },
-  //   async ({ loginPage, performAccessibilityScan }) => {
-  //     await test.step("Run accessibility scan", async () => {
-  //       await expect(loginPage.emailInputBox).toBeVisible();
-  //       const results = await performAccessibilityScan();
-  //       await expect.soft(results).toEqual(0);
-  //     });
-  //   }
-  // );
+  test(
+    "Accessibility Test",
+    { tag: ["@accessibility", "@regression"] },
+    async ({ loginPage, performAccessibilityScan }) => {
+      test.fail();
+      await test.step("Run accessibility scan", async () => {
+        await expect(loginPage.emailInputBox).toBeVisible();
+        const violationCount = await performAccessibilityScan();
+        expect(
+          violationCount,
+          `Found ${violationCount} accessibility violation(s). Check console output above for details.`
+        ).toBe(0);
+      });
+    }
+  );
 });
