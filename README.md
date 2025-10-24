@@ -12,7 +12,7 @@
 
 > A production-ready, AI-powered test automation framework that unifies UI and API testing with intelligent workflows.
 
-Inside you'll find an MCP-integrated Playwright stack that blends UI and API automation with WebdriverIO/Appium mobile coverage—optimized for fast feedback, high reusability, and clean abstractions that scale with your product.
+Inside you'll find an MCP-integrated Playwright stack that blends UI and API automation with WebdriverIO/Appium mobile coverage—optimized for fast feedback, high reusability, and clean abstractions.
 
 ## 🎯 Why This Framework?
 
