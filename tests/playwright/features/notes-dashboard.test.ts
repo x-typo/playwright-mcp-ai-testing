@@ -202,7 +202,7 @@ test.describe("Notes Dashboard Page", () => {
 
       await test.step("Verify", async () => {
         await expect(modalsPage.modalHeading("Add new note")).toBeVisible();
-        await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
+        await expect(modalsPage.addNoteTitleInputBox).toBeVisible();
         await expect(modalsPage.submitButton).toBeVisible();
       });
     }
@@ -219,7 +219,7 @@ test.describe("Notes Dashboard Page", () => {
 
       await test.step("Verify", async () => {
         await expect(modalsPage.modalHeading("Edit note")).toBeVisible();
-        await expect(modalsPage.addNewNoteTitleInput).toBeVisible();
+        await expect(modalsPage.addNoteTitleInputBox).toBeVisible();
         await expect(modalsPage.submitButton).toBeVisible();
       });
     }
