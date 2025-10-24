@@ -22,7 +22,7 @@
     "codegen-mobile": "npx playwright codegen --device=\"iPhone 14\" https://practice.expandtesting.com/notes/app"
   },
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@lambdatest/playwright-driver": "^1.0.6",
     "@lambdatest/smartui-cli": "^3.0.12",
