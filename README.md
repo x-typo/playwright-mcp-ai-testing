@@ -14,13 +14,13 @@
 
 Inside you'll find an MCP-integrated Playwright stack that blends UI and API automation with WebdriverIO/Appium mobile coverage—optimized for fast feedback, high reusability, and clean abstractions.
 
-## 🎯 Why This Framework?
+## Why This Framework?
 
-- **🚀 Fast Onboarding** - Get productive in minutes with AI-assisted test authoring
-- **🔒 Reliable** - API-backed setup eliminates flaky tests and data dependencies
-- **♻️ Maintainable** - SOLID principles and Page Object Model keep code clean
-- **📊 Observable** - Built-in reporting, visual regression, and CI/CD integration
-- **🤖 AI-Native** - Natural language commands accelerate test creation and debugging
+- **Fast Onboarding** - Get productive in minutes with AI-assisted test authoring
+- **Reliable** - API-backed setup eliminates flaky tests and data dependencies
+- **Maintainable** - SOLID principles and Page Object Model keep code clean
+- **Observable** - Built-in reporting, visual regression, and CI/CD integration
+- **AI-Native** - Natural language commands accelerate test creation and debugging
 
 ## Highlights
 
@@ -89,7 +89,7 @@ Create a `.env` file in the project root (or export the variables in your shell)
 
 The npm scripts rely on `cross-env` to load these variables (see `package.json`).
 
-## ⚡ Quick Start
+## Quick Start
 
 Get up and running in under 2 minutes, then pair it with the MCP-powered "open chrome" flow to lock selectors in minutes:
 
@@ -109,9 +109,9 @@ npx playwright install
 npm run chrome-debug -- --grep "@smoke"
 ```
 
-**✅ Success!** You should see the Playwright debugger open and tests running.
+**Success!** You should see the Playwright debugger open and tests running.
 
-## 🤖 AI Workflow Requirements
+## AI Workflow Requirements
 
 To leverage the AI assistant for DOM inspection or natural language automation flows:
 
@@ -182,15 +182,15 @@ To leverage the AI assistant for DOM inspection or natural language automation f
 
 ## Troubleshooting
 
-| Issue                  | Solution                                                                                                      |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------- |
-| 🔐 **Auth failures**   | Re-run `npm run chrome-debug` to confirm storage state is valid; check `auth/authSetups/global-setup.ts` logs |
-| 🎯 **Flaky selectors** | Use "open chrome" workflow to inspect live DOM, then update the page object                                   |
-| 👁️ **Visual drift**    | Mask dynamic regions before capturing snapshots; use `maxDiffPixelRatio: 0.03` as guardrail                   |
-| 📱 **Mobile issues**   | Validate WDIO configs under `configs/`; ensure LambdaTest credentials are exported                            |
-| 🐛 **Test failures**   | Check trace files in `test-results/` or run with `--debug` flag for step-by-step execution                    |
+| Issue               | Solution                                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Auth failures**   | Re-run `npm run chrome-debug` to confirm storage state is valid; check `auth/authSetups/global-setup.ts` logs |
+| **Flaky selectors** | Use "open chrome" workflow to inspect live DOM, then update the page object                                   |
+| **Visual drift**    | Mask dynamic regions before capturing snapshots; use `maxDiffPixelRatio: 0.03` as guardrail                   |
+| **Mobile issues**   | Validate WDIO configs under `configs/`; ensure LambdaTest credentials are exported                            |
+| **Test failures**   | Check trace files in `test-results/` or run with `--debug` flag for step-by-step execution                    |
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Framework Architecture Guide](./AGENTS.md) - Deep dive into design patterns and AI workflows
 - [Playwright Documentation](https://playwright.dev/) - Official Playwright docs
@@ -199,11 +199,11 @@ To leverage the AI assistant for DOM inspection or natural language automation f
 - [Claude Code](https://docs.claude.com/en/home) - Claude’s IDE with native MCP client support
 - [OpenAI Codex](https://developers.openai.com/codex) - Codex developer platform and MCP integrations
 
-## 📝 License
+## License
 
 MIT License - see [LICENSE](./LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built with [Playwright](https://playwright.dev/) by Microsoft
 - AI integration powered by Model Context Protocol (MCP)
