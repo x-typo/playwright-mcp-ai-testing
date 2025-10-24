@@ -136,9 +136,33 @@ export const test = base.extend<AutomationFixtures>({
     await use(pageFactory.getPracticesPage());
   },
 
-  // Accessibility tools (optional)
-  // performAccessibilityScan: async ({ axeBuilder }, use) => { ... }
-  // axeBuilder: async ({ page }, use) => { ... }
+  // Accessibility scan
+  performAccessibilityScan: async ({ page }, use) => {
+    await use(async () => {
+      const results = await new AxeBuilder({ page }).analyze();
+      const filteredViolations = results.violations.filter(
+        (violation) =>
+          violation.impact === "critical" || violation.impact === "serious"
+      );
+
+      if (filteredViolations.length > 0) {
+        const violationSummary = filteredViolations
+          .map((violation, index) => {
+            const nodes = violation.nodes
+              .map((node) => `     - ${node.target.join(" ")}`)
+              .join("\n");
+            return `\n  ${index + 1}. ${violation.id} (${violation.impact}) - ${violation.nodes.length} element(s)\n     Description: ${violation.description}\n     Elements:\n${nodes}`;
+          })
+          .join("\n");
+
+        console.error(
+          `\nAccessibility violations found:\n${violationSummary}\n`
+        );
+      }
+
+      return filteredViolations.length;
+    });
+  },
 });
 
 export { expect, asUser };
