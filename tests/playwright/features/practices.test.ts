@@ -63,7 +63,7 @@ test.describe("Practices page", () => {
     });
   });
 
-  test.skip(
+  test(
     "Visual Test",
     { tag: ["@visual", "@smoke", "@regression"] },
     async ({ practicesPage }) => {
