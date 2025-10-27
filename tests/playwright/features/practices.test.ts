@@ -63,8 +63,8 @@ test.describe("Practices page", () => {
     });
   });
 
-  test.only(
-    "Visual Tests",
+  test(
+    "Visual Test",
     { tag: ["@visual", "@smoke", "@regression"] },
     async ({ practicesPage }) => {
       const snapshotName = "practicesPage_.png";
