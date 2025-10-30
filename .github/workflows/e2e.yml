@@ -74,8 +74,15 @@ jobs:
           password: ${{ env.MAIL_PASSWORD }}
           from: ${{ env.MAIL_USERNAME }}
           to: ${{ env.MAIL_END_USER }}
-          subject: Playwright E2E Tests Results (AI) - Desktop
-          body: Detailed reports - ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          subject: Playwright E2E Tests (Desktop) - Results - (${{ job.status }})
+          body: |
+            AI-Powered E2E Test Results - Desktop Viewport
+
+            Status: ${{ job.status }}
+            Workflow: ${{ github.workflow }}
+            Run: #${{ github.run_number }}
+
+            View detailed results: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       - name: Notify MS Teams
         if: always()
@@ -153,8 +160,15 @@ jobs:
           password: ${{ env.MAIL_PASSWORD }}
           from: ${{ env.MAIL_USERNAME }}
           to: ${{ env.MAIL_END_USER }}
-          subject: Playwright E2E Tests Results (AI) - Mobile
-          body: Detailed reports - ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          subject: Playwright E2E Tests (Mobile) - Results - (${{ job.status }})
+          body: |
+            AI-Powered E2E Test Results - Mobile Viewport
+
+            Status: ${{ job.status }}
+            Workflow: ${{ github.workflow }}
+            Run: #${{ github.run_number }}
+
+            View detailed results: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       - name: Notify MS Teams
         if: always()
