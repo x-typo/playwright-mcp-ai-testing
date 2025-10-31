@@ -2,6 +2,42 @@ import { test, expect } from "../../../fixtures/automation-fixtures";
 import { getNoteIdByTitle } from "../../../api/utils/notes-helpers";
 
 test.describe("Notes Dashboard Page", () => {
+  const seededNotes: { id: string; title: string }[] = [];
+
+  test.beforeAll(async ({ notesClient, generateRandomText }) => {
+    const seedPayloads = Array.from({ length: 2 }, (_, index) => {
+      const suffix = generateRandomText(6);
+      return {
+        title: `search-note-${index + 1}-${suffix}`,
+        description: `search note seed ${index + 1} - ${suffix}`,
+        category: "Work",
+      };
+    });
+
+    const responses = await Promise.all(
+      seedPayloads.map(async (note) => {
+        const response = await notesClient.createNote(note);
+        expect(response.success).toBe(true);
+        expect(response.status).toBe(200);
+        const noteId = response.data?.id;
+        expect(noteId).toBeTruthy();
+        return { id: noteId!, title: note.title };
+      })
+    );
+    seededNotes.push(...responses);
+    expect(seededNotes).toHaveLength(seedPayloads.length);
+  });
+
+  test.afterAll(async ({ notesClient }) => {
+    await Promise.all(
+      seededNotes.map(async ({ id }) => {
+        const deleteResponse = await notesClient.deleteNote(id);
+        expect(deleteResponse.success).toBe(true);
+        expect(deleteResponse.status).toBe(200);
+      })
+    );
+  });
+
   test.beforeEach("Navigate to page", async ({ notesDashboardPage }) => {
     await notesDashboardPage.navigateNotesDashboardPage();
   });
@@ -183,12 +219,19 @@ test.describe("Notes Dashboard Page", () => {
       });
 
       await test.step("Search for notes", async () => {
-        await notesDashboardPage.searchNotes("work1");
+        await notesDashboardPage.searchNotes(seededNotes[0]?.title ?? "");
       });
 
       await test.step("Verify", async () => {
-        await expect(notesDashboardPage.noteCardTitle("work1")).toBeVisible();
-        await expect(notesDashboardPage.noteCardTitle("work2")).toBeHidden();
+        const [firstSeed, secondSeed] = seededNotes;
+        await expect(
+          notesDashboardPage.noteCardTitle(firstSeed.title)
+        ).toBeVisible();
+        if (secondSeed) {
+          await expect(
+            notesDashboardPage.noteCardTitle(secondSeed.title)
+          ).toBeHidden();
+        }
       });
     }
   );
@@ -244,7 +287,12 @@ test.describe("Notes Dashboard Page", () => {
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage, modalsPage }) => {
       await test.step("Open modal", async () => {
-        await notesDashboardPage.searchNotes("work2");
+        const targetNoteTitle = seededNotes[0]?.title ?? "";
+        expect(
+          targetNoteTitle,
+          "Expected at least one seeded note before opening edit modal"
+        ).not.toBe("");
+        await notesDashboardPage.searchNotes(targetNoteTitle);
         await notesDashboardPage.selectEditButton();
       });
 
@@ -261,7 +309,12 @@ test.describe("Notes Dashboard Page", () => {
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage, modalsPage }) => {
       await test.step("Open modal", async () => {
-        await notesDashboardPage.searchNotes("work2");
+        const targetNoteTitle = seededNotes[0]?.title ?? "";
+        expect(
+          targetNoteTitle,
+          "Expected at least one seeded note before opening delete modal"
+        ).not.toBe("");
+        await notesDashboardPage.searchNotes(targetNoteTitle);
         await notesDashboardPage.selectDeleteButton();
       });
 
