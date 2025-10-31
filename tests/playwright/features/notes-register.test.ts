@@ -86,7 +86,7 @@ test.describe("Notes Register Page", () => {
       await test.step("Perform visual comparison", async () => {
         await expect(notesRegisterPage.pageHeading).toBeVisible();
         expect(
-          await notesRegisterPage.page.screenshot({
+          await notesRegisterPage.captureScreenshot({
             animations: "disabled",
           })
         ).toMatchSnapshot(snapshotName, { maxDiffPixelRatio: ratioAllowed });
