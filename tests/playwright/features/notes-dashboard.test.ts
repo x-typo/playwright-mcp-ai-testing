@@ -1,34 +1,26 @@
 import { test, expect } from "../../../fixtures/automation-fixtures";
 import { getNoteIdByTitle } from "../../../api/utils/notes-helpers";
+import {
+  seedDashboardNotes,
+  type SeededNote,
+} from "../support/notes-dashboard-seed.helper";
 
 test.describe("Notes Dashboard Page", () => {
-  const seededNotes: { id: string; title: string }[] = [];
+  let seededNotes: SeededNote[] = [];
 
   test.beforeAll(async ({ notesClient, generateRandomText }) => {
-    const seedPayloads = Array.from({ length: 2 }, (_, index) => {
-      const suffix = generateRandomText(6);
-      return {
-        title: `search-note-${index + 1}-${suffix}`,
-        description: `search note seed ${index + 1} - ${suffix}`,
-        category: "Work",
-      };
+    const seeds = await seedDashboardNotes({
+      notesClient,
+      generateRandomText,
     });
-
-    const responses = await Promise.all(
-      seedPayloads.map(async (note) => {
-        const response = await notesClient.createNote(note);
-        expect(response.success).toBe(true);
-        expect(response.status).toBe(200);
-        const noteId = response.data?.id;
-        expect(noteId).toBeTruthy();
-        return { id: noteId!, title: note.title };
-      })
-    );
-    seededNotes.push(...responses);
-    expect(seededNotes).toHaveLength(seedPayloads.length);
+    expect(seeds.length).toBeGreaterThan(0);
+    seededNotes = seeds;
   });
 
   test.afterAll(async ({ notesClient }) => {
+    if (seededNotes.length === 0) {
+      return;
+    }
     await Promise.all(
       seededNotes.map(async ({ id }) => {
         const deleteResponse = await notesClient.deleteNote(id);
@@ -36,6 +28,7 @@ test.describe("Notes Dashboard Page", () => {
         expect(deleteResponse.status).toBe(200);
       })
     );
+    seededNotes = [];
   });
 
   test.beforeEach("Navigate to page", async ({ notesDashboardPage }) => {
@@ -214,6 +207,10 @@ test.describe("Notes Dashboard Page", () => {
     "Search Notes",
     { tag: ["@smoke", "@regression"] },
     async ({ notesDashboardPage }) => {
+      expect(
+        seededNotes.length,
+        "Expected seeded notes to exist before running search scenario"
+      ).toBeGreaterThan(0);
       await test.step("Select tab", async () => {
         await notesDashboardPage.selectCategoryButton("Work");
       });
