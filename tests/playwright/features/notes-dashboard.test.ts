@@ -62,20 +62,37 @@ test.describe("Notes Dashboard Page", () => {
   test(
     "Update Note",
     { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, modalsPage, notesClient }) => {
-      const noteId = "68c5dac606ff22028be98c3a";
+    async ({
+      notesDashboardPage,
+      modalsPage,
+      notesClient,
+      generateRandomText,
+    }) => {
+      const noteSuffix = generateRandomText(8);
       const originalNote = {
-        title: "work2",
-        description: "randomTexts123",
-        completed: false,
+        title: `originalNote-${noteSuffix}`,
+        description: `originalDescription-${noteSuffix}`,
         category: "Work",
       };
       const updatedNote = {
-        title: "work2-updated",
-        description: "randomTexts456",
-        completed: false,
+        title: `${originalNote.title}-updated`,
+        description: `${originalNote.description}-updated`,
         category: "Work",
       };
+      let noteId: string | undefined;
+
+      await test.step("Setup", async () => {
+        const createNoteResponse = await notesClient.createNote({
+          title: originalNote.title,
+          description: originalNote.description,
+          category: originalNote.category,
+        });
+        expect(createNoteResponse.success).toBe(true);
+        expect(createNoteResponse.status).toBe(200);
+        noteId = createNoteResponse.data?.id;
+        expect(noteId).toBeTruthy();
+        await notesDashboardPage.navigateNotesDashboardPage();
+      });
 
       await test.step("Search for notes", async () => {
         await notesDashboardPage.searchNotes(originalNote.title);
@@ -89,6 +106,10 @@ test.describe("Notes Dashboard Page", () => {
         );
       });
 
+      await test.step("Search for notes", async () => {
+        await notesDashboardPage.searchNotes(updatedNote.title);
+      });
+
       await test.step("Verify", async () => {
         await expect(
           notesDashboardPage.noteCardTitle(updatedNote.title)
@@ -99,11 +120,12 @@ test.describe("Notes Dashboard Page", () => {
       });
 
       await test.step("Teardown", async () => {
-        const restoreNoteResponse = await notesClient.updateNote(noteId, {
-          ...originalNote,
-        });
-        expect(restoreNoteResponse.success).toBe(true);
-        expect(restoreNoteResponse.status).toBe(200);
+        expect(noteId).toBeTruthy();
+        if (noteId) {
+          const deleteResponse = await notesClient.deleteNote(noteId);
+          expect(deleteResponse.success).toBe(true);
+          expect(deleteResponse.status).toBe(200);
+        }
       });
     }
   );
@@ -132,9 +154,6 @@ test.describe("Notes Dashboard Page", () => {
         expect(createNoteResponse.status).toBe(200);
         noteId = createNoteResponse.data?.id;
         expect(noteId).toBeTruthy();
-      });
-
-      await test.step("Reload page", async () => {
         await notesDashboardPage.navigateNotesDashboardPage();
       });
 
