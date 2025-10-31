@@ -1,14 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import dotenv from "dotenv";
 import { asUser, UserRole } from "../auth/authManager";
 import { test as base, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { NotesClient } from "../api/clients/notes.client";
 import { ApiClientFactory } from "../api/clients/api-client-factory";
 import { HealthApiClient } from "../api/clients/health.api-client";
-import { PageFactory } from "../tests/playwright/pages/page-Factory.page";
+import { PageFactory } from "../tests/playwright/pages/page-factory.page";
 import { BasePage } from "../tests/playwright/pages/base.page";
 import { LoginPage } from "../tests/playwright/pages/login.page";
 import { NotesDashboardPage } from "../tests/playwright/pages/notes-dashboard.page";
