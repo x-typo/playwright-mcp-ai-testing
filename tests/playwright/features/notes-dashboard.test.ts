@@ -1,9 +1,9 @@
 import { test, expect } from "../../../fixtures/automation-fixtures";
-import { getNoteIdByTitle } from "../../../api/utils/notes-helpers";
 import {
+  getNoteIdByTitle,
   seedDashboardNotes,
   type SeededNote,
-} from "../support/notes-dashboard-seed.helper";
+} from "../../../api/utils/notes-helpers";
 
 test.describe("Notes Dashboard Page", () => {
   let seededNotes: SeededNote[] = [];
