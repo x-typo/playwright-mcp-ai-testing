@@ -333,3 +333,18 @@ gh auth setup-git    # wire Git to the GH token
 # If base detection misbehaves, realign origin/HEAD:
 git remote set-head origin --auto
 ```
+
+**PR Summary Template**
+
+Always close a successful push with a concise summary:
+
+```
+Changes pushed ✅
+- Branch: <branch-name>
+- Commit: <emoji> <type>: <subject>
+- PR: <pull-request-url>
+- Validation: <tests run or "not run">
+- Next steps: <follow-up actions or "none">
+```
+
+Keep the bullet list tight and factual so the reviewer instantly knows where to look and what remains.
