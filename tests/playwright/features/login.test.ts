@@ -112,7 +112,7 @@ test.describe("Login Page", () => {
       await test.step("Perform visual comparison", async () => {
         await expect(loginPage.emailInputBox).toBeVisible();
         expect(
-          await loginPage.page.screenshot({
+          await loginPage.captureScreenshot({
             animations: "disabled",
             mask: [loginPage.googleLoginButton],
           })

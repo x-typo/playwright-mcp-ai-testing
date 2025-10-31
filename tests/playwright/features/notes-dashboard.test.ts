@@ -266,7 +266,7 @@ test.describe("Notes Dashboard Page", () => {
       await test.step("Perform visual comparison", async () => {
         await expect(notesDashboardPage.text("notes completed")).toBeVisible();
         expect(
-          await notesDashboardPage.page.screenshot({
+          await notesDashboardPage.captureScreenshot({
             animations: "disabled",
             mask: [notesDashboardPage.testIdSelector("notes-list")],
           })

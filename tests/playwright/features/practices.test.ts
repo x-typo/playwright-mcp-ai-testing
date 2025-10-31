@@ -73,7 +73,7 @@ test.describe("Practices page", () => {
       await test.step("Perform visual comparison", async () => {
         await expect(practicesPage.searchInputBox).toBeVisible();
         expect(
-          await practicesPage.page.screenshot({
+          await practicesPage.captureScreenshot({
             animations: "disabled",
             mask: [],
           })

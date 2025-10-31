@@ -1,4 +1,8 @@
-import { type Locator, type Page } from "@playwright/test";
+import {
+  type Locator,
+  type Page,
+  type PageScreenshotOptions,
+} from "@playwright/test";
 
 export class BasePage {
   readonly page: Page;
@@ -58,5 +62,11 @@ export class BasePage {
   }
   async selectLink(name: string): Promise<void> {
     await this.link(name).click();
+  }
+
+  async captureScreenshot(
+    options?: PageScreenshotOptions
+  ): ReturnType<Page["screenshot"]> {
+    return this.page.screenshot(options);
   }
 }
