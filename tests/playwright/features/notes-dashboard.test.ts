@@ -21,10 +21,16 @@ test.describe("Notes Dashboard Page", () => {
   test(
     "Add New Note",
     { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, modalsPage, notesClient }) => {
+    async ({
+      notesDashboardPage,
+      modalsPage,
+      notesClient,
+      generateRandomText,
+    }) => {
+      const noteSuffix = generateRandomText(8);
       const noteData = {
-        title: "addNoteTest",
-        description: "addNoteDescriptionTest",
+        title: `addNoteTest-${noteSuffix}`,
+        description: `addNoteDescriptionTest-${noteSuffix}`,
       };
 
       await test.step("Create new note", async () => {
@@ -105,10 +111,16 @@ test.describe("Notes Dashboard Page", () => {
   test(
     "Delete Note",
     { tag: ["@smoke", "@regression"] },
-    async ({ notesDashboardPage, modalsPage, notesClient }) => {
+    async ({
+      notesDashboardPage,
+      modalsPage,
+      notesClient,
+      generateRandomText,
+    }) => {
+      const noteSuffix = generateRandomText(8);
       const noteData = {
-        title: "deleteNoteTest",
-        description: "deleteNoteDescriptionTest",
+        title: `deleteNoteTest-${noteSuffix}`,
+        description: `deleteNoteDescriptionTest-${noteSuffix}`,
         category: "Personal",
       };
 
