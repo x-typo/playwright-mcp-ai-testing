@@ -16,9 +16,9 @@ export class NotesDashboardPage extends BasePage {
     noteCardTitle: "note-card-title",
     noteCardDescription: "note-card-description",
     allCategory: "All",
-    workCategory: "Work•",
-    homeCategory: "Home•",
-    personalCategory: "Personal•",
+    workCategory: "Work",
+    homeCategory: "Home",
+    personalCategory: "Personal",
   } as const;
 
   constructor(page: Page, isMobile: boolean | undefined) {
