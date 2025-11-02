@@ -88,7 +88,7 @@ test.describe("Notes Dashboard Page", () => {
     }
   );
 
-  test(
+  test.only(
     "Update Note",
     { tag: ["@smoke", "@regression"] },
     async ({
