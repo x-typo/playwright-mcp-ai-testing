@@ -7,6 +7,7 @@
 **File location**: `C:\Users\x-typ\Downloads\automations\playwright-mcp-ai-testing\AGENTS.md`
 
 **Why this setup?**
+
 - `AGENTS.md` is the single source of truth for all agent instructions
 - This file (`.claude/instructions.md`) is automatically read by Claude Code at conversation start
 - This file instructs you to immediately read `AGENTS.md` for the full instructions
