@@ -88,7 +88,7 @@ test.describe("Notes Dashboard Page", () => {
     }
   );
 
-  test.fixme(
+  test(
     "Update Note",
     { tag: ["@smoke", "@regression"] },
     async ({
