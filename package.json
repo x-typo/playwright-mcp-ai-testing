@@ -27,7 +27,7 @@
     "@lambdatest/playwright-driver": "^1.0.6",
     "@lambdatest/smartui-cli": "^3.0.12",
     "@lambdatest/wdio-driver": "^1.0.6",
-    "@playwright/test": "^1.51.0",
+    "@playwright/test": "^1.56.1",
     "@types/mocha": "^10.0.7",
     "@types/node": "^20.14.12",
     "@types/webdriverio": "^5.0.0",

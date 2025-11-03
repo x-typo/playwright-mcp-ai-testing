@@ -1,5 +1,5 @@
 import { type Locator, type Page } from "@playwright/test";
-import { BasePage } from "./base.page.ts";
+import { BasePage } from "./base.page";
 
 export class NotesRegisterPage extends BasePage {
   private readonly selectors = {
