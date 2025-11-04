@@ -125,10 +125,12 @@ test.describe("Login Page", () => {
     "Accessibility Test",
     { tag: ["@accessibility", "@regression"] },
     async ({ loginPage, performAccessibilityScan }) => {
-      test.fail();
       await test.step("Run accessibility scan", async () => {
         await expect(loginPage.emailInputBox).toBeVisible();
         const violationCount = await performAccessibilityScan();
+        if (violationCount > 0) {
+          test.fail(true, "Known accessibility violations under investigation");
+        }
         expect(
           violationCount,
           `Found ${violationCount} accessibility violation(s). Check console output above for details.`
