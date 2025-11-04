@@ -1,5 +1,5 @@
 import { type Locator, type Page } from "@playwright/test";
-import { BasePage } from "./base.page";
+import { BasePage } from "./base.page.ts";
 
 export class ModalsPage extends BasePage {
   private readonly selectors = {

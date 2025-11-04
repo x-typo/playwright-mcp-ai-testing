@@ -1,11 +1,11 @@
 import { Page } from "@playwright/test";
-import { LoginPage } from "./login.page";
-import { ModalsPage } from "./modals.page";
-import { NotesDashboardPage } from "./notes-dashboard.page";
-import { NotesProfileSettingsPage } from "./notes-profile-settings.page";
-import { ForgotPasswordPage } from "./forgot-password.page";
-import { NotesRegisterPage } from "./notes-register.page";
-import { PracticesPage } from "./practices.page";
+import { LoginPage } from "./login.page.ts";
+import { ModalsPage } from "./modals.page.ts";
+import { NotesDashboardPage } from "./notes-dashboard.page.ts";
+import { NotesProfileSettingsPage } from "./notes-profile-settings.page.ts";
+import { ForgotPasswordPage } from "./forgot-password.page.ts";
+import { NotesRegisterPage } from "./notes-register.page.ts";
+import { PracticesPage } from "./practices.page.ts";
 
 export class PageFactory {
   constructor(
