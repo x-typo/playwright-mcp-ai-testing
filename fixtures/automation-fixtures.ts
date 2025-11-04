@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { asUser, UserRole } from "../auth/authManager";
 import { test as base, expect } from "@playwright/test";
+import type { Page as AxePage } from "playwright-core";
 import AxeBuilder from "@axe-core/playwright";
 import { NotesClient } from "../api/clients/notes.client";
 import { ApiClientFactory } from "../api/clients/api-client-factory";
@@ -138,7 +139,7 @@ export const test = base.extend<AutomationFixtures>({
   // Accessibility scan
   performAccessibilityScan: async ({ page }, use) => {
     await use(async () => {
-      const results = await new AxeBuilder({ page }).analyze();
+      const results = await new AxeBuilder({ page: page as AxePage }).analyze();
       const filteredViolations = results.violations.filter(
         (violation) =>
           violation.impact === "critical" || violation.impact === "serious"
